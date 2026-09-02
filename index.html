@@ -3,243 +3,248 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>XENYX E-SPORTS | Overall Standings</title>
+<title>XENYX E-SPORTS - Tournament Standings</title>
 
 <style>
 *{
     box-sizing:border-box;
     margin:0;
     padding:0;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#07080d;
-    color:white;
-    min-height:100vh;
-}
-
-header{
-    padding:25px 15px;
-    text-align:center;
-    background:linear-gradient(135deg,#111522,#08090e);
-    border-bottom:2px solid #e60000;
-}
-
-header h1{
-    font-size:32px;
-    font-weight:900;
-    letter-spacing:2px;
-}
-
-header p{
-    margin-top:7px;
-    color:#aaa;
-    font-size:14px;
+    background:#0b0b0b;
+    color:#fff;
+    padding:15px;
 }
 
 .container{
-    width:95%;
-    max-width:1500px;
-    margin:25px auto;
+    max-width:1100px;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+    font-size:28px;
+    margin:10px 0 5px;
+    color:#ff3030;
+    font-weight:900;
+}
+
+.subtitle{
+    text-align:center;
+    color:#aaa;
+    margin-bottom:20px;
 }
 
 .card{
-    background:#10121a;
-    border:1px solid #282c38;
-    border-radius:15px;
-    padding:20px;
-    margin-bottom:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,.3);
+    background:#151515;
+    border:1px solid #292929;
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:15px;
 }
 
 .card h2{
-    margin-bottom:15px;
-    font-size:21px;
+    color:#ff3030;
+    font-size:20px;
+    margin-bottom:12px;
 }
 
-.controls{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-bottom:15px;
+.global-info{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+label{
+    display:block;
+    color:#aaa;
+    font-size:13px;
+    margin-bottom:5px;
 }
 
 input{
-    background:#080a0f;
-    border:1px solid #353a48;
-    color:white;
-    border-radius:8px;
+    width:100%;
+    background:#0d0d0d;
+    border:1px solid #333;
+    color:#fff;
     padding:11px;
+    border-radius:7px;
     outline:none;
 }
 
 input:focus{
-    border-color:#e60000;
-}
-
-.team-name{
-    min-width:200px;
-}
-
-.point-input{
-    width:75px;
-    text-align:center;
+    border-color:#ff3030;
 }
 
 button{
-    border:none;
-    border-radius:8px;
-    padding:11px 17px;
+    border:0;
+    border-radius:7px;
+    padding:10px 14px;
     cursor:pointer;
     font-weight:bold;
-    color:white;
-    background:#e00000;
-    transition:.2s;
 }
 
-button:hover{
-    transform:translateY(-1px);
-    filter:brightness(1.15);
+.btn-red{
+    background:#ff3030;
+    color:#fff;
 }
 
 .btn-dark{
-    background:#292d38;
+    background:#292929;
+    color:#fff;
 }
 
 .btn-green{
-    background:#087f45;
+    background:#159447;
+    color:#fff;
 }
 
 .btn-blue{
-    background:#1856b5;
+    background:#245fd1;
+    color:#fff;
 }
 
-.btn-danger{
-    background:#9e1111;
+.team-add{
+    display:flex;
+    gap:10px;
 }
 
-.table-wrapper{
+.team-add input{
+    flex:1;
+}
+
+.team{
+    background:#101010;
+    border:1px solid #282828;
+    border-radius:10px;
+    padding:12px;
+    margin-top:12px;
+}
+
+.team-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-bottom:10px;
+}
+
+.team-name{
+    font-size:18px;
+    font-weight:bold;
+    color:#fff;
+}
+
+.match-grid{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:8px;
+}
+
+.match-box{
+    background:#181818;
+    border:1px solid #303030;
+    border-radius:7px;
+    padding:8px;
+}
+
+.match-title{
+    text-align:center;
+    color:#ff3030;
+    font-weight:bold;
+    margin-bottom:7px;
+    font-size:13px;
+}
+
+.small-input{
+    padding:8px 5px;
+    text-align:center;
+    margin-bottom:5px;
+}
+
+.delete-btn{
+    background:#a91515;
+    color:white;
+    font-size:12px;
+    padding:7px 10px;
+}
+
+.controls{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:15px;
+}
+
+.table-wrap{
     overflow-x:auto;
 }
 
 table{
     width:100%;
     border-collapse:collapse;
-    min-width:900px;
+    min-width:650px;
 }
 
 th{
-    background:#1b1e28;
+    background:#ff3030;
     color:#fff;
-    padding:13px 8px;
-    font-size:13px;
-    border-bottom:2px solid #e00000;
+    padding:12px 8px;
 }
 
 td{
-    padding:10px 7px;
+    background:#121212;
+    border-bottom:1px solid #292929;
+    padding:11px 8px;
     text-align:center;
-    border-bottom:1px solid #292d37;
 }
 
-td:first-child{
-    font-weight:900;
-}
-
-.team-cell{
+td:nth-child(2){
     text-align:left;
     font-weight:bold;
-    min-width:180px;
 }
 
-.match-title{
-    color:#ff5555;
-    font-size:12px;
-    margin-bottom:3px;
+.rank{
+    font-size:18px;
+    font-weight:bold;
 }
 
 .total{
+    color:#ff4040;
     font-weight:900;
-    color:#00ff9d;
-    font-size:17px;
-}
-
-.rank-1{
-    color:#ffd700;
-    font-size:20px;
-}
-
-.rank-2{
-    color:#c9d0da;
-    font-size:19px;
-}
-
-.rank-3{
-    color:#cd7f32;
-    font-size:19px;
-}
-
-.delete-btn{
-    background:#661010;
-    padding:7px 10px;
-    font-size:12px;
-}
-
-.small-note{
-    color:#888;
-    font-size:12px;
-    margin-top:8px;
-}
-
-.overall-title{
-    text-align:center;
-    margin-bottom:20px;
-}
-
-.overall-title h2{
-    font-size:30px;
-    letter-spacing:3px;
-    color:white;
-}
-
-.overall-title p{
-    color:#e00000;
-    font-weight:bold;
-    margin-top:5px;
+    font-size:18px;
 }
 
 .empty{
     text-align:center;
-    padding:35px;
     color:#777;
-}
-
-.footer{
-    text-align:center;
     padding:25px;
-    color:#666;
-    font-size:12px;
 }
 
-/* Mobile */
-@media(max-width:600px){
-    header h1{
-        font-size:24px;
+@media(max-width:800px){
+    .match-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:500px){
+    body{
+        padding:8px;
     }
 
-    .card{
-        padding:14px;
+    .global-info{
+        grid-template-columns:1fr;
     }
 
-    .team-name{
-        min-width:150px;
-        width:100%;
+    .team-add{
+        flex-direction:column;
     }
 
-    .controls{
-        gap:7px;
+    .match-grid{
+        grid-template-columns:1fr 1fr;
     }
 }
 </style>
@@ -247,1441 +252,704 @@ td:first-child{
 
 <body>
 
-<header>
-    <h1>XENYX E-SPORTS</h1>
-    <p>SEASON 01 - QUALIFIERS • OVERALL STANDINGS SYSTEM</p>
-</header>
-
 <div class="container">
 
-    <!-- TEAM ENTRY -->
-    <div class="card">
+<h1>XENYX E-SPORTS</h1>
+<div class="subtitle">SEASON 01 - QUALIFIERS</div>
 
-        <h2>➕ Add Team</h2>
+<!-- GLOBAL DATE & TIME -->
+<div class="card">
+    <h2>Date & Time</h2>
 
-        <div class="controls">
-
-            <input
-                id="newTeam"
-                class="team-name"
-                type="text"
-                placeholder="Enter Team Name"
-            >
-
-            <button onclick="addTeam()">
-                ADD TEAM
-            </button>
-
-            <button class="btn-dark" onclick="resetAll()">
-                RESET ALL
-            </button>
-
+    <div class="global-info">
+        <div>
+            <label>DATE</label>
+            <input type="date" id="globalDate">
         </div>
 
-        <div class="small-note">
-            Maximum 7 matches. Blank K/P means that match has not been played.
+        <div>
+            <label>TIME</label>
+            <input type="time" id="globalTime">
         </div>
-
     </div>
-
-
-    <!-- MATCH DATA -->
-    <div class="card">
-
-        <h2>📊 Match Results</h2>
-
-        <div class="table-wrapper">
-
-            <table>
-
-                <thead id="entryHead">
-                    <!-- JS -->
-                </thead>
-
-                <tbody id="entryBody">
-                    <!-- JS -->
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </div>
-
-
-    <!-- OVERALL -->
-    <div class="card">
-
-        <div class="overall-title">
-
-            <h2>OVERALL STANDINGS</h2>
-
-            <p>
-                SEASON 01 - QUALIFIERS
-            </p>
-
-        </div>
-
-        <div class="table-wrapper">
-
-            <table>
-
-                <thead>
-                    <tr>
-                        <th>RANK</th>
-                        <th>TEAM</th>
-                        <th>MATCH</th>
-                        <th>KILL</th>
-                        <th>PLACEMENT</th>
-                        <th>TOTAL POINT</th>
-                    </tr>
-                </thead>
-
-                <tbody id="overallBody">
-                    <!-- JS -->
-                </tbody>
-
-            </table>
-
-        </div>
-
-        <br>
-
-        <div style="text-align:center">
-
-            <button
-                class="btn-blue"
-                onclick="downloadFinalImage()"
-            >
-                ⬇ DOWNLOAD FINAL IMAGE
-            </button>
-
-        </div>
-
-    </div>
-
 </div>
 
-<div class="footer">
-    XENYX E-SPORTS • FREE FIRE MAX
+<!-- TEAM ADD -->
+<div class="card">
+    <h2>Teams</h2>
+
+    <div class="team-add">
+        <input
+            type="text"
+            id="teamName"
+            placeholder="Enter Team Name"
+        >
+
+        <button class="btn-red" onclick="addTeam()">
+            + ADD TEAM
+        </button>
+    </div>
+
+    <div id="teamsContainer"></div>
+
+    <div class="controls">
+        <button class="btn-dark" onclick="resetAll()">
+            RESET ALL
+        </button>
+
+        <button class="btn-green" onclick="saveData()">
+            SAVE DATA
+        </button>
+
+        <button class="btn-blue" onclick="downloadImage()">
+            DOWNLOAD FINAL IMAGE
+        </button>
+    </div>
 </div>
 
+<!-- OVERALL -->
+<div class="card">
+    <h2>OVERALL STANDINGS</h2>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>RANK</th>
+                    <th>TEAM</th>
+                    <th>MATCH</th>
+                    <th>KILL</th>
+                    <th>PLACEMENT</th>
+                    <th>TOTAL POINT</th>
+                </tr>
+            </thead>
+
+            <tbody id="overallBody"></tbody>
+        </table>
+    </div>
+</div>
+
+</div>
 
 <script>
 
-/* =========================================================
-   SETTINGS
-========================================================= */
-
 const MAX_MATCHES = 7;
+const STORAGE_KEY = "xenyxTeams";
 
-/*
-   IMPORTANT:
-   Put your 1920x1080 background image beside index.html
-   and name it:
+let teams = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
 
-   background.png
-*/
+/* GLOBAL DATE/TIME */
+const globalDate = document.getElementById("globalDate");
+const globalTime = document.getElementById("globalTime");
 
-const BACKGROUND_IMAGE = "background.png";
+globalDate.value = localStorage.getItem("globalDate") || "";
+globalTime.value = localStorage.getItem("globalTime") || "";
 
+globalDate.addEventListener("change", saveGlobalDateTime);
+globalTime.addEventListener("change", saveGlobalDateTime);
 
-/* =========================================================
-   DATA
-========================================================= */
-
-let teams = JSON.parse(
-    localStorage.getItem("xenyxTeams")
-) || [];
-
-
-/* =========================================================
-   SAVE
-========================================================= */
-
-function saveData(){
-
-    localStorage.setItem(
-        "xenyxTeams",
-        JSON.stringify(teams)
-    );
-
+function saveGlobalDateTime(){
+    localStorage.setItem("globalDate", globalDate.value);
+    localStorage.setItem("globalTime", globalTime.value);
 }
 
 
-/* =========================================================
-   ADD TEAM
-========================================================= */
-
+/* ADD TEAM */
 function addTeam(){
 
-    const input =
-        document.getElementById("newTeam");
-
-    const name =
-        input.value.trim();
+    const input = document.getElementById("teamName");
+    const name = input.value.trim();
 
     if(!name){
-
-        alert("Please enter team name.");
-
-        return;
-    }
-
-    if(teams.length >= 50){
-
-        alert("Maximum 50 teams.");
-
-        return;
-    }
-
-    const exists =
-        teams.some(
-            t =>
-            t.name.toLowerCase() ===
-            name.toLowerCase()
-        );
-
-    if(exists){
-
-        alert("This team already exists.");
-
+        alert("Enter team name!");
         return;
     }
 
     teams.push({
-
         name:name,
-
         matches:Array.from(
             {length:MAX_MATCHES},
-            () => ({
-                k:"",
-                p:""
-            })
+            ()=>({k:"",p:""})
         )
-
     });
 
     input.value="";
 
     saveData();
-
-    render();
-
+    renderTeams();
+    renderOverall();
 }
 
 
-/* =========================================================
-   DELETE TEAM
-========================================================= */
-
+/* DELETE TEAM */
 function deleteTeam(index){
 
-    if(
-        !confirm(
-            "Delete this team?"
-        )
-    ){
-
+    if(!confirm("Delete this team?")){
         return;
     }
 
     teams.splice(index,1);
 
     saveData();
-
-    render();
-
-}
-
-
-/* =========================================================
-   RESET
-========================================================= */
-
-function resetAll(){
-
-    if(
-        !confirm(
-            "Are you sure you want to delete all teams and results?"
-        )
-    ){
-
-        return;
-    }
-
-    teams=[];
-
-    localStorage.removeItem(
-        "xenyxTeams"
-    );
-
-    render();
-
-}
-
-
-/* =========================================================
-   UPDATE POINT
-========================================================= */
-
-function updatePoint(
-    teamIndex,
-    matchIndex,
-    type,
-    value
-){
-
-    value =
-        value.replace(/[^0-9]/g,"");
-
-    teams[teamIndex]
-        .matches[matchIndex][type] =
-        value;
-
-    saveData();
-
+    renderTeams();
     renderOverall();
-
 }
 
 
-/* =========================================================
-   CALCULATE TEAM
-========================================================= */
-
+/* CALCULATE */
 function calculateTeam(team){
 
-    let kills=0;
+    let kills = 0;
+    let placement = 0;
+    let matchCount = 0;
 
-    let placement=0;
+    team.matches.forEach(match=>{
 
-    let matchCount=0;
-
-
-    team.matches.forEach(match => {
-
-        const k =
-            match.k === ""
-            ? 0
-            : Number(match.k);
-
-        const p =
-            match.p === ""
-            ? 0
-            : Number(match.p);
-
-        kills += k;
-
-        placement += p;
-
+        const kValue = match.k;
+        const pValue = match.p;
 
         /*
-          Match counts as played when
-          either K or P is filled.
-
-          Therefore:
-          "" + "" = not played
-          0 + 0 = played
+        Blank K and blank P = match not played.
+        0 is considered a played match.
         */
-
-        if(
-            match.k !== "" ||
-            match.p !== ""
-        ){
-
+        if(kValue !== "" || pValue !== ""){
             matchCount++;
-
         }
 
+        kills += Number(kValue) || 0;
+        placement += Number(pValue) || 0;
     });
 
-
     return {
-
+        name:team.name,
+        matches:matchCount,
         kills:kills,
-
         placement:placement,
-
-        total:kills+placement,
-
-        matches:matchCount
-
+        total:kills + placement
     };
-
 }
 
 
-/* =========================================================
-   RENDER MATCH HEADER
-========================================================= */
+/* RENDER TEAMS */
+function renderTeams(){
 
-function renderHeader(){
+    const container = document.getElementById("teamsContainer");
 
-    const head =
-        document.getElementById(
-            "entryHead"
-        );
-
-    let html="";
-
-    html += "<tr>";
-
-    html += "<th>TEAM</th>";
-
-    for(
-        let i=0;
-        i<MAX_MATCHES;
-        i++
-    ){
-
-        html += `
-            <th>
-                MATCH ${i+1}<br>
-                <span style="font-size:10px;color:#777">
-                    K / P
-                </span>
-            </th>
-        `;
-
-    }
-
-    html += "<th>ACTION</th>";
-
-    html += "</tr>";
-
-    head.innerHTML=html;
-
-}
-
-
-/* =========================================================
-   RENDER ENTRY TABLE
-========================================================= */
-
-function renderEntry(){
-
-    const body =
-        document.getElementById(
-            "entryBody"
-        );
-
-    if(teams.length===0){
-
-        body.innerHTML=`
-            <tr>
-                <td
-                    colspan="${MAX_MATCHES+2}"
-                    class="empty"
-                >
-                    No teams added yet.
-                </td>
-            </tr>
-        `;
-
+    if(teams.length === 0){
+        container.innerHTML =
+            '<div class="empty">No team added yet.</div>';
         return;
     }
 
+    container.innerHTML = "";
 
-    let html="";
+    teams.forEach((team,index)=>{
 
+        const teamDiv = document.createElement("div");
+        teamDiv.className = "team";
 
-    teams.forEach(
-        (team,teamIndex) => {
+        let html = `
+            <div class="team-header">
 
-            html += "<tr>";
-
-            html += `
-                <td class="team-cell">
+                <div class="team-name">
                     ${escapeHTML(team.name)}
-                </td>
-            `;
+                </div>
 
+                <button
+                    class="delete-btn"
+                    onclick="deleteTeam(${index})"
+                >
+                    DELETE
+                </button>
 
-            team.matches.forEach(
-                (match,matchIndex) => {
+            </div>
 
-                    html += `
-                        <td>
+            <div class="match-grid">
+        `;
 
-                            <input
-                                class="point-input"
-                                inputmode="numeric"
-                                maxlength="4"
-                                placeholder="K"
-                                value="${escapeAttr(match.k)}"
-                                onchange="
-                                    updatePoint(
-                                        ${teamIndex},
-                                        ${matchIndex},
-                                        'k',
-                                        this.value
-                                    )
-                                "
-                            >
-
-                            <br>
-
-                            <input
-                                class="point-input"
-                                inputmode="numeric"
-                                maxlength="4"
-                                placeholder="P"
-                                value="${escapeAttr(match.p)}"
-                                onchange="
-                                    updatePoint(
-                                        ${teamIndex},
-                                        ${matchIndex},
-                                        'p',
-                                        this.value
-                                    )
-                                "
-                            >
-
-                        </td>
-                    `;
-
-                }
-            );
-
+        for(let i=0;i<MAX_MATCHES;i++){
 
             html += `
-                <td>
+                <div class="match-box">
 
-                    <button
-                        class="delete-btn"
-                        onclick="
-                            deleteTeam(${teamIndex})
-                        "
+                    <div class="match-title">
+                        MATCH ${i+1}
+                    </div>
+
+                    <input
+                        class="small-input"
+                        type="number"
+                        min="0"
+                        placeholder="KILL"
+                        value="${team.matches[i].k}"
+                        onchange="updateMatch(${index},${i},'k',this.value)"
                     >
-                        DELETE
-                    </button>
 
-                </td>
+                    <input
+                        class="small-input"
+                        type="number"
+                        min="0"
+                        placeholder="PLACE"
+                        value="${team.matches[i].p}"
+                        onchange="updateMatch(${index},${i},'p',this.value)"
+                    >
+
+                </div>
             `;
-
-            html += "</tr>";
-
         }
-    );
 
+        html += `</div>`;
 
-    body.innerHTML=html;
+        teamDiv.innerHTML = html;
 
+        container.appendChild(teamDiv);
+    });
 }
 
 
-/* =========================================================
-   RENDER OVERALL
-========================================================= */
+/* UPDATE MATCH */
+function updateMatch(teamIndex,matchIndex,type,value){
 
+    teams[teamIndex].matches[matchIndex][type] = value;
+
+    saveData();
+    renderOverall();
+}
+
+
+/* OVERALL */
 function renderOverall(){
 
-    const body =
-        document.getElementById(
-            "overallBody"
-        );
+    const body = document.getElementById("overallBody");
 
-
-    if(teams.length===0){
-
-        body.innerHTML=`
+    if(teams.length === 0){
+        body.innerHTML = `
             <tr>
-                <td
-                    colspan="6"
-                    class="empty"
-                >
-                    No results available.
+                <td colspan="6" class="empty">
+                    No data available
                 </td>
             </tr>
         `;
-
         return;
     }
 
+    let results = teams.map(calculateTeam);
 
-    let results =
-        teams.map(
-            team => {
+    results.sort((a,b)=>{
 
-                const stats =
-                    calculateTeam(team);
+        if(b.total !== a.total)
+            return b.total - a.total;
 
-                return {
+        if(b.kills !== a.kills)
+            return b.kills - a.kills;
 
-                    name:team.name,
+        return b.placement - a.placement;
+    });
 
-                    ...stats
+    body.innerHTML = "";
 
-                };
+    results.forEach((team,index)=>{
 
-            }
-        );
+        const row = document.createElement("tr");
 
+        row.innerHTML = `
+            <td class="rank">${index+1}</td>
+            <td>${escapeHTML(team.name)}</td>
+            <td>${team.matches}</td>
+            <td>${team.kills}</td>
+            <td>${team.placement}</td>
+            <td class="total">${team.total}</td>
+        `;
 
-    /*
-       Ranking:
-       1. Total Point
-       2. Kill
-       3. Placement
-    */
-
-    results.sort(
-        (a,b) => {
-
-            if(
-                b.total !== a.total
-            ){
-
-                return b.total-a.total;
-
-            }
-
-            if(
-                b.kills !== a.kills
-            ){
-
-                return b.kills-a.kills;
-
-            }
-
-            return b.placement-a.placement;
-
-        }
-    );
-
-
-    let html="";
-
-
-    results.forEach(
-        (team,index) => {
-
-            const rank=index+1;
-
-
-            let rankClass="";
-
-            if(rank===1){
-
-                rankClass="rank-1";
-
-            }else if(rank===2){
-
-                rankClass="rank-2";
-
-            }else if(rank===3){
-
-                rankClass="rank-3";
-
-            }
-
-
-            html += `
-                <tr>
-
-                    <td class="${rankClass}">
-                        ${rank}
-                    </td>
-
-                    <td class="team-cell">
-                        ${escapeHTML(team.name)}
-                    </td>
-
-                    <td>
-                        ${team.matches}
-                    </td>
-
-                    <td>
-                        ${team.kills}
-                    </td>
-
-                    <td>
-                        ${team.placement}
-                    </td>
-
-                    <td class="total">
-                        ${team.total}
-                    </td>
-
-                </tr>
-            `;
-
-        }
-    );
-
-
-    body.innerHTML=html;
-
+        body.appendChild(row);
+    });
 }
 
 
-/* =========================================================
-   RENDER EVERYTHING
-========================================================= */
+/* SAVE */
+function saveData(){
 
-function render(){
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(teams)
+    );
 
-    renderHeader();
+    saveGlobalDateTime();
+}
 
-    renderEntry();
 
+/* RESET */
+function resetAll(){
+
+    if(!confirm("Are you sure you want to reset everything?")){
+        return;
+    }
+
+    teams = [];
+
+    localStorage.removeItem(STORAGE_KEY);
+
+    renderTeams();
     renderOverall();
-
 }
 
 
-/* =========================================================
-   SECURITY HELPERS
-========================================================= */
+/* ESCAPE HTML */
+function escapeHTML(text){
 
-function escapeHTML(value){
-
-    return String(value)
+    return String(text)
         .replace(/&/g,"&amp;")
         .replace(/</g,"&lt;")
         .replace(/>/g,"&gt;")
         .replace(/"/g,"&quot;")
         .replace(/'/g,"&#039;");
-
 }
 
 
-function escapeAttr(value){
-
-    return escapeHTML(value);
-
-}
-
-
-/* =========================================================
-   CANVAS HELPERS
-========================================================= */
-
-function roundedRect(
-    ctx,
-    x,
-    y,
-    w,
-    h,
-    r
-){
-
-    const radius =
-        Math.min(r,w/2,h/2);
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-        x+radius,
-        y
-    );
-
-    ctx.arcTo(
-        x+w,
-        y,
-        x+w,
-        y+h,
-        radius
-    );
-
-    ctx.arcTo(
-        x+w,
-        y+h,
-        x,
-        y+h,
-        radius
-    );
-
-    ctx.arcTo(
-        x,
-        y+h,
-        x,
-        y,
-        radius
-    );
-
-    ctx.arcTo(
-        x,
-        y,
-        x+w,
-        y,
-        radius
-    );
-
-    ctx.closePath();
-
-}
-
-
-/* =========================================================
-   DRAW FINAL IMAGE
-========================================================= */
-
-function drawFinalImage(){
-
-    return new Promise(
-        (resolve,reject) => {
-
-            const img =
-                new Image();
-
-            img.onload=function(){
-
-                const canvas =
-                    document.createElement(
-                        "canvas"
-                    );
-
-                /*
-                   Use background's natural size.
-                   Recommended background:
-                   1920 x 1080
-                */
-
-                canvas.width =
-                    img.naturalWidth || 1920;
-
-                canvas.height =
-                    img.naturalHeight || 1080;
-
-
-                const ctx =
-                    canvas.getContext("2d");
-
-
-                const W=canvas.width;
-
-                const H=canvas.height;
-
-
-                /* BACKGROUND */
-
-                ctx.drawImage(
-                    img,
-                    0,
-                    0,
-                    W,
-                    H
-                );
-
-
-                /* DARK OVERLAY */
-
-                ctx.fillStyle=
-                    "rgba(0,0,0,0.38)";
-
-                ctx.fillRect(
-                    0,
-                    0,
-                    W,
-                    H
-                );
-
-
-                /*
-                   TOP GRADIENT
-                */
-
-                const topGradient =
-                    ctx.createLinearGradient(
-                        0,
-                        0,
-                        W,
-                        0
-                    );
-
-                topGradient.addColorStop(
-                    0,
-                    "rgba(180,0,0,.65)"
-                );
-
-                topGradient.addColorStop(
-                    .5,
-                    "rgba(0,0,0,.15)"
-                );
-
-                topGradient.addColorStop(
-                    1,
-                    "rgba(180,0,0,.65)"
-                );
-
-                ctx.fillStyle =
-                    topGradient;
-
-                ctx.fillRect(
-                    0,
-                    0,
-                    W,
-                    130
-                );
-
-
-                /* TITLE */
-
-                ctx.textAlign="center";
-
-                ctx.fillStyle="#ffffff";
-
-                ctx.font=
-                    "900 30px Arial";
-
-                ctx.fillText(
-                    "SEASON 01 - QUALIFIERS",
-                    W/2,
-                    52
-                );
-
-
-                ctx.font=
-                    "900 50px Arial";
-
-                ctx.fillStyle="#ff2222";
-
-                ctx.fillText(
-                    "XENYX E-SPORTS",
-                    W/2,
-                    105
-                );
-
-
-                ctx.font=
-                    "700 18px Arial";
-
-                ctx.fillStyle="#ffffff";
-
-                ctx.fillText(
-                    "PRESENTS",
-                    W/2,
-                    135
-                );
-
-
-                /* DATE */
-
-                ctx.font=
-                    "700 17px Arial";
-
-                ctx.fillStyle="#dddddd";
-
-                ctx.fillText(
-                    "DATE: 12 OCTOBER 2026 | TIME: 19:00 IST",
-                    W/2,
-                    166
-                );
-
-
-                /* OVERALL TITLE */
-
-                ctx.font=
-                    "900 40px Arial";
-
-                ctx.fillStyle="#ffffff";
-
-                ctx.fillText(
-                    "OVERALL STANDINGS",
-                    W/2,
-                    220
-                );
-
-
-                ctx.fillStyle="#e00000";
-
-                ctx.fillRect(
-                    W/2-170,
-                    235,
-                    340,
-                    4
-                );
-
-
-                /* DATA */
-
-                let results =
-                    teams.map(
-                        team => {
-
-                            const stats =
-                                calculateTeam(team);
-
-                            return {
-
-                                name:team.name,
-
-                                ...stats
-
-                            };
-
-                        }
-                    );
-
-
-                results.sort(
-                    (a,b) => {
-
-                        if(
-                            b.total!==a.total
-                        ){
-
-                            return b.total-a.total;
-
-                        }
-
-                        if(
-                            b.kills!==a.kills
-                        ){
-
-                            return b.kills-a.kills;
-
-                        }
-
-                        return b.placement-a.placement;
-
-                    }
-                );
-
-
-                /*
-                   TABLE AREA
-                */
-
-                const tableX =
-                    W*.08;
-
-                const tableW =
-                    W*.84;
-
-                const headerY=265;
-
-                const footerSpace=155;
-
-                const available =
-                    H-headerY-footerSpace;
-
-                const maxRows =
-                    Math.max(
-                        results.length,
-                        1
-                    );
-
-                const rowH =
-                    Math.min(
-                        48,
-                        available/(maxRows+1)
-                    );
-
-
-                /* TABLE HEADER */
-
-                roundedRect(
-                    ctx,
-                    tableX,
-                    headerY,
-                    tableW,
-                    rowH,
-                    8
-                );
-
-                ctx.fillStyle=
-                    "rgba(180,0,0,.9)";
-
-                ctx.fill();
-
-
-                const cols=[
-                    .08,
-                    .42,
-                    .54,
-                    .67,
-                    .82,
-                    .94
-                ];
-
-
-                ctx.textAlign="center";
-
-                ctx.fillStyle="#ffffff";
-
-                ctx.font=
-                    "900 17px Arial";
-
-
-                const headers=[
-                    "RANK",
-                    "TEAM",
-                    "MATCH",
-                    "KILL",
-                    "PLACEMENT",
-                    "TOTAL POINT"
-                ];
-
-
-                headers.forEach(
-                    (text,i) => {
-
-                        ctx.fillText(
-                            text,
-                            tableX+
-                            tableW*cols[i],
-                            headerY+
-                            rowH*.65
-                        );
-
-                    }
-                );
-
-
-                /* TABLE ROWS */
-
-                results.forEach(
-                    (team,index) => {
-
-                        const y =
-                            headerY+
-                            rowH+
-                            index*rowH;
-
-
-                        /*
-                           Row background
-                        */
-
-                        roundedRect(
-                            ctx,
-                            tableX,
-                            y,
-                            tableW,
-                            rowH-2,
-                            6
-                        );
-
-
-                        ctx.fillStyle =
-                            index%2===0
-                            ? "rgba(10,12,18,.82)"
-                            : "rgba(30,32,40,.78)";
-
-                        ctx.fill();
-
-
-                        const rank =
-                            index+1;
-
-
-                        let rankColor=
-                            "#ffffff";
-
-
-                        if(rank===1)
-                            rankColor="#ffd700";
-
-                        if(rank===2)
-                            rankColor="#d7dce3";
-
-                        if(rank===3)
-                            rankColor="#cd7f32";
-
-
-                        ctx.font=
-                            "900 18px Arial";
-
-                        ctx.fillStyle=
-                            rankColor;
-
-                        ctx.fillText(
-                            rank,
-                            tableX+
-                            tableW*cols[0],
-                            y+
-                            rowH*.65
-                        );
-
-
-                        /* TEAM */
-
-                        ctx.textAlign="left";
-
-                        ctx.font=
-                            "800 17px Arial";
-
-                        ctx.fillStyle=
-                            "#ffffff";
-
-
-                        let teamName=
-                            team.name;
-
-
-                        /*
-                           Prevent very long names
-                        */
-
-                        if(
-                            ctx.measureText(teamName).width >
-                            tableW*.29
-                        ){
-
-                            while(
-                                ctx.measureText(
-                                    teamName+"..."
-                                ).width >
-                                tableW*.29
-                                &&
-                                teamName.length>5
-                            ){
-
-                                teamName =
-                                    teamName.slice(
-                                        0,
-                                        -1
-                                    );
-
-                            }
-
-                            teamName+="...";
-
-                        }
-
-
-                        ctx.fillText(
-                            teamName,
-                            tableX+
-                            tableW*.15,
-                            y+
-                            rowH*.65
-                        );
-
-
-                        ctx.textAlign="center";
-
-
-                        ctx.font=
-                            "700 17px Arial";
-
-                        ctx.fillStyle="#eeeeee";
-
-
-                        ctx.fillText(
-                            team.matches,
-                            tableX+
-                            tableW*cols[2],
-                            y+
-                            rowH*.65
-                        );
-
-
-                        ctx.fillText(
-                            team.kills,
-                            tableX+
-                            tableW*cols[3],
-                            y+
-                            rowH*.65
-                        );
-
-
-                        ctx.fillText(
-                            team.placement,
-                            tableX+
-                            tableW*cols[4],
-                            y+
-                            rowH*.65
-                        );
-
-
-                        ctx.font=
-                            "900 19px Arial";
-
-                        ctx.fillStyle="#00ff9d";
-
-
-                        ctx.fillText(
-                            team.total,
-                            tableX+
-                            tableW*cols[5],
-                            y+
-                            rowH*.65
-                        );
-
-                    }
-                );
-
-
-                /* =================================================
-                   FOOTER BRANDING
-                ================================================= */
-
-                const footerY =
-                    H-105;
-
-
-                ctx.textAlign="center";
-
-
-                ctx.font=
-                    "900 27px Arial";
-
-                ctx.fillStyle="#ffffff";
-
-                ctx.fillText(
-                    "XENYX E-SPORTS",
-                    W/2,
-                    footerY
-                );
-
-
-                ctx.font=
-                    "900 20px Arial";
-
-                ctx.fillStyle="#ff2020";
-
-                ctx.fillText(
-                    "FREE FIRE",
-                    W/2-65,
-                    footerY+34
-                );
-
-
-                ctx.fillStyle="#ffffff";
-
-                ctx.fillText(
-                    "MAX",
-                    W/2+55,
-                    footerY+34
-                );
-
-
-                ctx.font=
-                    "700 13px Arial";
-
-                ctx.fillStyle="#aaaaaa";
-
-                ctx.fillText(
-                    "XENYX E-SPORTS",
-                    W/2,
-                    footerY+57
-                );
-
-
-                /* FOOTER LINES */
-
-                ctx.fillStyle="#e00000";
-
-                ctx.fillRect(
-                    W/2-260,
-                    footerY-13,
-                    160,
-                    2
-                );
-
-                ctx.fillRect(
-                    W/2+100,
-                    footerY-13,
-                    160,
-                    2
-                );
-
-
-                resolve(canvas);
-
-            };
-
-
-            img.onerror=function(){
-
-                reject(
-                    new Error(
-                        "Background image could not be loaded."
-                    )
-                );
-
-            };
-
-
-            img.src =
-                BACKGROUND_IMAGE+
-                "?v="+Date.now();
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   DOWNLOAD IMAGE
-========================================================= */
-
-async function downloadFinalImage(){
-
-    try{
-
-        if(teams.length===0){
-
-            alert(
-                "Please add teams and results first."
-            );
-
-            return;
-        }
-
-
-        const canvas =
-            await drawFinalImage();
-
-
-        canvas.toBlob(
-            blob => {
-
-                const url =
-                    URL.createObjectURL(
-                        blob
-                    );
-
-
-                const a =
-                    document.createElement(
-                        "a"
-                    );
-
-
-                a.href=url;
-
-                a.download=
-                    "XENYX-OVERALL-STANDINGS.png";
-
-
-                document.body.appendChild(a);
-
-                a.click();
-
-                a.remove();
-
-                URL.revokeObjectURL(url);
-
-            },
-            "image/png"
-        );
-
-
-    }catch(error){
-
-        alert(
-            "Background image পাওয়া যাচ্ছে না। নিশ্চিত করুন background.png ফাইলটি index.html-এর একই folder-এ আছে।"
-        );
-
-        console.error(error);
-
+/* DATE FORMAT */
+function formatDate(dateString){
+
+    if(!dateString){
+        return "DATE: —";
     }
 
+    const date = new Date(dateString + "T00:00:00");
+
+    return "DATE: " +
+        date.toLocaleDateString("en-GB",{
+            day:"2-digit",
+            month:"2-digit",
+            year:"numeric"
+        });
 }
 
 
-/* =========================================================
-   START
-========================================================= */
+/* TIME FORMAT */
+function formatTime(timeString){
 
-render();
+    if(!timeString){
+        return "TIME: —";
+    }
+
+    const parts = timeString.split(":");
+    let hour = Number(parts[0]);
+    const minute = parts[1];
+
+    const ampm = hour >= 12 ? "PM" : "AM";
+
+    hour = hour % 12;
+
+    if(hour === 0){
+        hour = 12;
+    }
+
+    return "TIME: " +
+        hour.toString().padStart(2,"0") +
+        ":" +
+        minute +
+        " " +
+        ampm;
+}
+
+
+/* DOWNLOAD FINAL IMAGE */
+function downloadImage(){
+
+    if(teams.length === 0){
+        alert("Add teams first!");
+        return;
+    }
+
+    const canvas = document.createElement("canvas");
+
+    /*
+        FINAL IMAGE SIZE
+        1080 x 1920
+    */
+    canvas.width = 1080;
+    canvas.height = 1920;
+
+    const ctx = canvas.getContext("2d");
+
+    const img = new Image();
+
+    img.onload = function(){
+
+        /* BACKGROUND */
+        ctx.drawImage(
+            img,
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+        /* DARK OVERLAY */
+        ctx.fillStyle = "rgba(0,0,0,0.62)";
+        ctx.fillRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+        /* HEADER */
+        ctx.textAlign = "center";
+
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 42px Arial";
+
+        ctx.fillText(
+            "SEASON 01 - QUALIFIERS",
+            540,
+            100
+        );
+
+        ctx.fillStyle = "#ff3030";
+        ctx.font = "bold 64px Arial";
+
+        ctx.fillText(
+            "XENYX E-SPORTS",
+            540,
+            175
+        );
+
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 30px Arial";
+
+        ctx.fillText(
+            "PRESENTS",
+            540,
+            225
+        );
+
+        ctx.fillStyle = "#dddddd";
+        ctx.font = "bold 28px Arial";
+
+        ctx.fillText(
+            formatDate(globalDate.value),
+            540,
+            275
+        );
+
+        ctx.fillText(
+            formatTime(globalTime.value),
+            540,
+            315
+        );
+
+
+        /* TITLE */
+        ctx.fillStyle = "#ff3030";
+        ctx.font = "bold 48px Arial";
+
+        ctx.fillText(
+            "OVERALL STANDINGS",
+            540,
+            410
+        );
+
+
+        /* DATA */
+        let results = teams.map(calculateTeam);
+
+        results.sort((a,b)=>{
+
+            if(b.total !== a.total)
+                return b.total - a.total;
+
+            if(b.kills !== a.kills)
+                return b.kills - a.kills;
+
+            return b.placement - a.placement;
+        });
+
+
+        /* TABLE */
+        const tableX = 55;
+        const tableY = 465;
+        const tableW = 970;
+
+        const rowH = 78;
+
+        const cols = [
+            90,
+            360,
+            120,
+            120,
+            140,
+            140
+        ];
+
+        /* HEADER */
+        ctx.fillStyle = "#ff3030";
+        ctx.fillRect(
+            tableX,
+            tableY,
+            tableW,
+            rowH
+        );
+
+        const headers = [
+            "RANK",
+            "TEAM",
+            "MATCH",
+            "KILL",
+            "PLACEMENT",
+            "TOTAL"
+        ];
+
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 22px Arial";
+        ctx.textAlign = "center";
+
+        let x = tableX;
+
+        headers.forEach((header,i)=>{
+
+            ctx.fillText(
+                header,
+                x + cols[i]/2,
+                tableY + 49
+            );
+
+            x += cols[i];
+        });
+
+
+        /* ROWS */
+        results.forEach((team,index)=>{
+
+            const y =
+                tableY +
+                rowH +
+                index * rowH;
+
+            ctx.fillStyle =
+                index % 2 === 0
+                ? "rgba(20,20,20,0.90)"
+                : "rgba(35,35,35,0.90)";
+
+            ctx.fillRect(
+                tableX,
+                y,
+                tableW,
+                rowH
+            );
+
+            ctx.strokeStyle = "rgba(255,255,255,0.15)";
+            ctx.strokeRect(
+                tableX,
+                y,
+                tableW,
+                rowH
+            );
+
+            const values = [
+                index + 1,
+                team.name,
+                team.matches,
+                team.kills,
+                team.placement,
+                team.total
+            ];
+
+            x = tableX;
+
+            values.forEach((value,i)=>{
+
+                ctx.fillStyle =
+                    i === 5
+                    ? "#ff4040"
+                    : "#ffffff";
+
+                ctx.font =
+                    i === 5
+                    ? "bold 25px Arial"
+                    : "bold 21px Arial";
+
+                ctx.fillText(
+                    String(value),
+                    x + cols[i]/2,
+                    y + 49
+                );
+
+                x += cols[i];
+            });
+        });
+
+
+        /* FOOTER */
+        ctx.textAlign = "center";
+
+        ctx.fillStyle = "#ff3030";
+        ctx.font = "bold 42px Arial";
+
+        ctx.fillText(
+            "XENYX E-SPORTS",
+            540,
+            1700
+        );
+
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 48px Arial";
+
+        ctx.fillText(
+            "FREE FIRE",
+            540,
+            1760
+        );
+
+        ctx.fillStyle = "#ff3030";
+        ctx.font = "bold 52px Arial";
+
+        ctx.fillText(
+            "MAX",
+            540,
+            1820
+        );
+
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 25px Arial";
+
+        ctx.fillText(
+            "XENYX E-SPORTS",
+            540,
+            1870
+        );
+
+
+        /* DOWNLOAD */
+        const link = document.createElement("a");
+
+        link.download =
+            "XENYX-OVERALL-STANDINGS.png";
+
+        link.href = canvas.toDataURL(
+            "image/png",
+            1.0
+        );
+
+        link.click();
+    };
+
+
+    img.onerror = function(){
+
+        alert(
+            "background.jpg পাওয়া যাচ্ছে না!\n\n" +
+            "index.html এর পাশে background.jpg রাখো।"
+        );
+    };
+
+
+    img.src = "background.jpg";
+}
+
+
+/* INITIAL LOAD */
+renderTeams();
+renderOverall();
 
 </script>
 
