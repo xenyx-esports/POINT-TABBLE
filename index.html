@@ -3,109 +3,120 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-<title>XENYX Tournament Points</title>
+<title>XENYX E-SPORTS - Season 01</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,sans-serif;
-}
+*{box-sizing:border-box}
 
 body{
+  margin:0;
+  font-family:Arial,sans-serif;
   background:#080808;
   color:#fff;
-  padding:15px;
-}
-
-.container{
-  max-width:1100px;
-  margin:auto;
 }
 
 header{
+  padding:22px 15px;
   text-align:center;
-  padding:20px 0;
-  border-bottom:1px solid #333;
-  margin-bottom:20px;
+  background:linear-gradient(135deg,#111,#202020);
+  border-bottom:2px solid #e50909;
 }
 
 header h1{
-  color:#ff2020;
-  font-size:28px;
+  margin:0;
+  font-size:30px;
 }
 
 header p{
+  margin:6px 0 0;
   color:#aaa;
-  margin-top:6px;
+}
+
+.container{
+  width:95%;
+  max-width:1100px;
+  margin:20px auto;
 }
 
 .card{
   background:#111;
   border:1px solid #292929;
-  border-radius:14px;
+  border-radius:12px;
   padding:18px;
   margin-bottom:18px;
 }
 
-.card h2{
-  color:#ff3030;
-  margin-bottom:15px;
+h2{
+  margin-top:0;
+  color:#ff3333;
 }
 
 input,button{
-  border:none;
-  outline:none;
-  border-radius:8px;
-  padding:10px;
-}
-
-input{
-  background:#1d1d1d;
-  color:white;
-  border:1px solid #333;
   width:100%;
+  padding:11px;
+  margin:5px 0;
+  border-radius:7px;
+  border:1px solid #333;
+  background:#1b1b1b;
+  color:#fff;
 }
 
 button{
+  background:#e50909;
+  border:none;
   cursor:pointer;
   font-weight:bold;
 }
 
-.red{
-  background:#e50909;
-  color:white;
+button:hover{
+  background:#ff2020;
 }
 
-.green{
-  background:#087f23;
-  color:white;
-}
-
-.gray{
-  background:#333;
-  color:white;
-}
-
-.danger{
-  background:#8d0000;
-  color:white;
-}
-
-.row{
+.grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
   gap:10px;
-  margin-bottom:10px;
 }
 
-.team{
+.login{
+  max-width:420px;
+  margin:35px auto;
+}
+
+.admin{
+  display:none;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:12px;
+  min-width:760px;
+}
+
+.table-wrap{
+  overflow-x:auto;
+}
+
+th,td{
   border:1px solid #333;
+  padding:9px 6px;
+  text-align:center;
+}
+
+th{
+  background:#e50909;
+}
+
+tr:nth-child(even){
+  background:#151515;
+}
+
+.team-box{
+  margin-top:15px;
   padding:15px;
-  border-radius:12px;
-  margin-bottom:15px;
+  border:1px solid #333;
+  border-radius:10px;
 }
 
 .team-title{
@@ -113,123 +124,73 @@ button{
   justify-content:space-between;
   align-items:center;
   gap:10px;
-  margin-bottom:12px;
 }
 
-.team-title strong{
-  color:#ff4444;
+.delete-btn{
+  width:auto;
+  padding:7px 12px;
+  background:#8b0000;
 }
 
-.matches{
+.small{
+  color:#aaa;
+  font-size:13px;
+}
+
+.success{
+  color:#36e36b;
+}
+
+.error{
+  color:#ff4d4d;
+}
+
+.match-grid{
   display:grid;
   grid-template-columns:repeat(7,1fr);
-  gap:7px;
+  gap:8px;
 }
 
 .match{
-  background:#181818;
-  border:1px solid #303030;
+  border:1px solid #333;
+  padding:8px;
   border-radius:8px;
-  padding:7px;
+  text-align:center;
 }
 
 .match b{
   display:block;
-  text-align:center;
-  margin-bottom:6px;
-  color:#aaa;
-  font-size:12px;
-}
-
-.match input{
-  padding:7px;
+  color:#ff3333;
   margin-bottom:5px;
-  font-size:12px;
-}
-
-.standings{
-  width:100%;
-  border-collapse:collapse;
-  margin-top:10px;
-}
-
-.standings th,
-.standings td{
-  padding:10px 6px;
-  text-align:center;
-  border-bottom:1px solid #292929;
-}
-
-.standings th{
-  color:#ff4040;
-  background:#151515;
-}
-
-.qualify{
-  background:#073c18 !important;
-}
-
-.login-box{
-  max-width:450px;
-  margin:50px auto;
-}
-
-.admin-box{
-  display:none;
-}
-
-.admin-list{
-  margin-top:15px;
 }
 
 .admin-item{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  background:#191919;
-  border:1px solid #333;
-  border-radius:10px;
   padding:12px;
-  margin-bottom:8px;
+  margin-top:10px;
+  border:1px solid #333;
+  border-radius:8px;
 }
 
-.admin-info{
-  flex:1;
+.status-active{
+  color:#36e36b;
 }
 
-.active{
-  color:#20e050;
+.status-disabled{
+  color:#ff4d4d;
 }
 
-.disabled{
-  color:#ff4040;
-}
-
-.top-badge{
-  font-size:12px;
-  padding:4px 7px;
-  border-radius:6px;
-  background:#8b6500;
-  color:white;
-}
-
-.hidden{
-  display:none !important;
+.danger{
+  background:#700000;
 }
 
 @media(max-width:700px){
-  .matches{
+
+  .match-grid{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .row{
-    grid-template-columns:1fr;
-  }
-
-  .admin-item{
-    flex-direction:column;
-    align-items:stretch;
+  header h1{
+    font-size:25px;
   }
 }
 </style>
@@ -237,236 +198,238 @@ button{
 
 <body>
 
-<div class="container">
-
 <header>
   <h1>XENYX E-SPORTS</h1>
-  <p>Tournament Points System</p>
+  <p>SEASON 01 - QUALIFIERS</p>
 </header>
 
+<div class="container">
 
-<!-- LOGIN -->
+<!-- ================= LOGIN ================= -->
 
-<div id="loginSection" class="card login-box">
+<div id="loginBox" class="card login">
 
-<h2>🔐 ADMIN LOGIN</h2>
+  <h2>ADMIN LOGIN</h2>
 
-<div class="row">
+  <input
+    id="loginEmail"
+    type="email"
+    placeholder="Admin Email"
+  >
 
-<div>
-<label>Email</label>
-<input id="loginEmail" type="email" placeholder="Admin email">
+  <input
+    id="loginPassword"
+    type="password"
+    placeholder="Password"
+  >
+
+  <button onclick="login()">
+    LOGIN
+  </button>
+
+  <p id="loginMsg" class="small"></p>
+
 </div>
 
-<div>
-<label>Password</label>
-<input id="loginPassword" type="password" placeholder="Password">
-</div>
+
+<!-- ================= ADMIN PANEL ================= -->
+
+<div id="adminPanel" class="admin">
+
+  <div class="card">
+
+    <h2>ADMIN DASHBOARD</h2>
+
+    <p>
+      Logged in as:
+      <b id="adminName">Admin</b>
+    </p>
+
+    <p class="small">
+      Role:
+      <b id="adminRole">admin</b>
+    </p>
+
+    <button onclick="logout()">
+      LOGOUT
+    </button>
+
+  </div>
+
+
+  <!-- ================= TOURNAMENT ================= -->
+
+  <div class="card">
+
+    <h2>TOURNAMENT</h2>
+
+    <div class="grid">
+
+      <div>
+        <label>Date</label>
+        <input
+          id="tournamentDate"
+          type="date"
+        >
+      </div>
+
+      <div>
+        <label>Time</label>
+        <input
+          id="tournamentTime"
+          type="time"
+        >
+      </div>
+
+    </div>
+
+    <button onclick="saveTournament()">
+      SAVE TOURNAMENT
+    </button>
+
+    <button
+      onclick="resetTournament()"
+      class="danger"
+    >
+      RESET ALL DATA
+    </button>
+
+    <p id="saveMsg" class="small"></p>
+
+  </div>
+
+
+  <!-- ================= ADD TEAM ================= -->
+
+  <div class="card">
+
+    <h2>ADD TEAM</h2>
+
+    <input
+      id="teamName"
+      placeholder="Team Name"
+    >
+
+    <button onclick="addTeam()">
+      ADD TEAM
+    </button>
+
+    <p id="teamMsg" class="small"></p>
+
+  </div>
+
+
+  <!-- ================= TEAM DATA ================= -->
+
+  <div class="card">
+
+    <h2>TEAM MATCH DATA</h2>
+
+    <div id="adminTeams"></div>
+
+  </div>
+
+
+  <!-- ================= SUPER ADMIN ================= -->
+
+  <div
+    id="superAdminPanel"
+    class="card"
+    style="display:none"
+  >
+
+    <h2>SUPER ADMIN CONTROL</h2>
+
+    <p class="small">
+      Only Super Admin can manage administrators.
+    </p>
+
+
+    <h3>Create New Admin</h3>
+
+    <input
+      id="newAdminName"
+      placeholder="Admin Name"
+    >
+
+    <input
+      id="newAdminEmail"
+      type="email"
+      placeholder="Admin Email"
+    >
+
+    <input
+      id="newAdminPassword"
+      type="password"
+      placeholder="Password (minimum 6 characters)"
+    >
+
+    <button onclick="createAdmin()">
+      CREATE ADMIN
+    </button>
+
+    <p id="adminMsg" class="small"></p>
+
+
+    <h3>Admin List</h3>
+
+    <div id="adminsList"></div>
+
+  </div>
 
 </div>
 
-<button class="red" onclick="login()" style="width:100%">
-LOGIN
-</button>
 
-<p id="loginMsg" style="margin-top:10px;color:#ff4040"></p>
-
-</div>
-
-
-<!-- ADMIN PANEL -->
-
-<div id="adminPanel" class="admin-box">
+<!-- ================= PUBLIC STANDINGS ================= -->
 
 <div class="card">
 
-<h2>👑 ADMIN PANEL</h2>
+  <h2>OVERALL STANDINGS</h2>
 
-<p id="adminWelcome" style="color:#aaa;margin-bottom:15px"></p>
+  <div class="small">
 
-<button class="danger" onclick="logout()">LOGOUT</button>
+    DATE:
+    <span id="publicDate">--</span>
 
-</div>
+    &nbsp;&nbsp;
 
+    TIME:
+    <span id="publicTime">--</span>
 
-<!-- ADMIN MANAGEMENT -->
+  </div>
 
-<div id="adminManagement" class="card">
 
-<h2>👑 ADMIN MANAGEMENT</h2>
+  <div class="table-wrap">
 
-<p style="color:#aaa;margin-bottom:15px">
-Only Main Admin can add or manage admins.
-</p>
+    <table>
 
-<div class="row">
+      <thead>
 
-<div>
-<label>Admin Name</label>
-<input id="newAdminName" placeholder="Example: Rahim">
-</div>
+        <tr>
 
-<div>
-<label>Email</label>
-<input id="newAdminEmail" type="email" placeholder="admin@email.com">
-</div>
+          <th>RANK</th>
+          <th>TEAM</th>
+          <th>MATCH</th>
+          <th>KILL</th>
+          <th>PLACEMENT</th>
+          <th>TOTAL POINT</th>
 
-</div>
+        </tr>
 
-<div class="row">
+      </thead>
 
-<div>
-<label>Password</label>
-<input id="newAdminPassword" type="password" placeholder="Minimum 6 characters">
-</div>
+      <tbody id="standingsBody"></tbody>
 
-<div style="display:flex;align-items:end">
-<button class="red" onclick="addNewAdmin()" style="width:100%">
-➕ ADD NEW ADMIN
-</button>
-</div>
+    </table>
 
-</div>
+  </div>
 
-<p id="adminMsg" style="margin-top:10px"></p>
 
-<div id="adminList" class="admin-list"></div>
+  <br>
 
-</div>
-
-
-<!-- TOURNAMENT -->
-
-<div class="card">
-
-<h2>⚙️ TOURNAMENT SETTINGS</h2>
-
-<div class="row">
-
-<div>
-<label>Date</label>
-<input id="eventDate" type="date">
-</div>
-
-<div>
-<label>Time</label>
-<input id="eventTime" type="time">
-</div>
-
-</div>
-
-<div class="row">
-
-<div>
-<label>TOP QUALIFY</label>
-<input id="qualifyCount" type="number" value="4" min="1">
-</div>
-
-<div style="display:flex;align-items:end">
-<button class="green" onclick="setQualify()" style="width:100%">
-SET QUALIFY
-</button>
-</div>
-
-</div>
-
-</div>
-
-
-<!-- TEAM ADD -->
-
-<div class="card">
-
-<h2>➕ ADD TEAM</h2>
-
-<div class="row">
-
-<div>
-<input id="teamName" placeholder="Team name">
-</div>
-
-<div>
-<button class="red" onclick="addTeam()" style="width:100%">
-ADD TEAM
-</button>
-</div>
-
-</div>
-
-</div>
-
-
-<!-- TEAMS -->
-
-<div class="card">
-
-<h2>🎮 MATCH RESULTS</h2>
-
-<div id="teams"></div>
-
-</div>
-
-
-<!-- STANDINGS -->
-
-<div class="card">
-
-<h2>🏆 OVERALL STANDINGS</h2>
-
-<div style="overflow-x:auto">
-
-<table class="standings">
-
-<thead>
-
-<tr>
-<th>#</th>
-<th>TEAM</th>
-<th>KILLS</th>
-<th>PLACE</th>
-<th>TOTAL</th>
-</tr>
-
-</thead>
-
-<tbody id="standingsBody"></tbody>
-
-</table>
-
-</div>
-
-</div>
-
-
-<!-- BUTTONS -->
-
-<div class="card">
-
-<div class="row">
-
-<button class="green" onclick="saveTournament()">
-💾 SAVE
-</button>
-
-<button class="gray" onclick="loadTournament()">
-🔄 LOAD
-</button>
-
-</div>
-
-<div class="row">
-
-<button class="danger" onclick="resetTournament()">
-♻️ RESET
-</button>
-
-<button class="red" onclick="downloadImage()">
-📸 DOWNLOAD IMAGE
-</button>
-
-</div>
-
-</div>
+  <button onclick="downloadImage()">
+    DOWNLOAD STANDINGS IMAGE
+  </button>
 
 </div>
 
@@ -475,1191 +438,2306 @@ ADD TEAM
 
 <script type="module">
 
-import {
- initializeApp,
- getApps,
- getApp
-} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+/* =================================================
+   FIREBASE IMPORTS
+================================================= */
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
 import {
- getAuth,
- signInWithEmailAndPassword,
- signOut,
- onAuthStateChanged,
- createUserWithEmailAndPassword
-} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 import {
- getFirestore,
- doc,
- getDoc,
- setDoc,
- collection,
- getDocs,
- updateDoc,
- deleteDoc,
- serverTimestamp
-} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  getDocs,
+  deleteDoc,
+  updateDoc,
+  serverTimestamp
+}
+from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+import {
+  initializeApp as initializeSecondaryApp,
+  deleteApp
+}
+from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+import {
+  getAuth as getSecondaryAuth,
+  createUserWithEmailAndPassword
+}
+from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 
-/* FIREBASE */
+/* =================================================
+   FIREBASE CONFIG
+================================================= */
 
 const firebaseConfig = {
- apiKey:"AIzaSyBfPTsq4gDFN8MdLrt4Lv_ccWjrgb_CtZ0",
- authDomain:"pointsystem-3e20a.firebaseapp.com",
- projectId:"pointsystem-3e20a",
- storageBucket:"pointsystem-3e20a.firebasestorage.app",
- messagingSenderId:"335071663643",
- appId:"1:335071663643:web:9cdddd709af5c37dda8abe"
+
+  apiKey:
+  "AIzaSyBfPTsq4gDFN8MdLrt4Lv_ccWjrgb_CtZ0",
+
+  authDomain:
+  "pointsystem-3e20a.firebaseapp.com",
+
+  projectId:
+  "pointsystem-3e20a",
+
+  storageBucket:
+  "pointsystem-3e20a.firebasestorage.app",
+
+  messagingSenderId:
+  "335071663643",
+
+  appId:
+  "1:335071663643:web:b44102d4b6ac264ada8abe"
 };
 
 
-const app = initializeApp(firebaseConfig);
+const app =
+initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
+const auth =
+getAuth(app);
 
-const db = getFirestore(app);
-
-
-/* SECOND AUTH FOR ADDING ADMIN */
-
-const secondaryApp = initializeApp(
- firebaseConfig,
- "SecondaryApp"
-);
-
-const secondaryAuth = getAuth(secondaryApp);
+const db =
+getFirestore(app);
 
 
-/* MAIN ADMIN UID */
+/* =================================================
+   SUPER ADMIN UID
+================================================= */
 
-const MAIN_ADMIN_UID =
-"TVnLZR8XnQfN1B4QNe2g7vgX1yx2";
+const SUPER_ADMIN_UID =
+"TVnLZR8XnQf1B4QNe2g7vgX1yx2";
 
 
 let currentAdmin = null;
 
-let currentAdminData = null;
+let tournament = {
 
-let teams = [];
+  date:"",
+  time:"",
+  teams:[]
 
-let qualifyCount = 4;
+};
 
 
-/* LOGIN */
+/* =================================================
+   PLACEMENT POINTS
+================================================= */
+
+function placementPoints(position){
+
+  const points = {
+
+    1:12,
+    2:9,
+    3:8,
+    4:7,
+    5:6,
+    6:5,
+    7:4,
+    8:3,
+    9:2,
+    10:1
+
+  };
+
+  return points[position] || 0;
+}
+
+
+/* =================================================
+   CALCULATE TEAM
+================================================= */
+
+function calculateTeam(team){
+
+  let kills = 0;
+  let placement = 0;
+  let matches = 0;
+
+
+  team.matches.forEach(match => {
+
+    const kill =
+    Number(match.kill) || 0;
+
+    const place =
+    Number(match.place) || 0;
+
+
+    if(kill > 0 || place > 0){
+
+      matches++;
+
+    }
+
+
+    kills += kill;
+
+    placement +=
+    placementPoints(place);
+
+  });
+
+
+  return {
+
+    kills:kills,
+
+    placement:placement,
+
+    total:kills + placement,
+
+    matches:matches
+
+  };
+
+}
+
+
+/* =================================================
+   SORT TEAMS
+================================================= */
+
+function sortedTeams(){
+
+  return [...tournament.teams].sort((a,b)=>{
+
+    const A =
+    calculateTeam(a);
+
+    const B =
+    calculateTeam(b);
+
+
+    if(B.total !== A.total)
+
+      return B.total - A.total;
+
+
+    if(B.kills !== A.kills)
+
+      return B.kills - A.kills;
+
+
+    return B.placement - A.placement;
+
+  });
+
+}
+
+
+/* =================================================
+   LOGIN
+================================================= */
 
 window.login = async function(){
 
- const email =
- document.getElementById("loginEmail").value.trim();
+  const email =
+  document
+  .getElementById("loginEmail")
+  .value
+  .trim();
 
- const password =
- document.getElementById("loginPassword").value;
 
- const msg =
- document.getElementById("loginMsg");
+  const password =
+  document
+  .getElementById("loginPassword")
+  .value;
 
- msg.style.color="#ff4040";
 
- if(!email || !password){
+  const msg =
+  document
+  .getElementById("loginMsg");
 
-   msg.textContent="Email and password required.";
 
-   return;
- }
+  if(!email || !password){
 
- try{
+    msg.className =
+    "small error";
 
-   await signInWithEmailAndPassword(
-     auth,
-     email,
-     password
-   );
+    msg.textContent =
+    "Email and password required.";
 
- }catch(error){
+    return;
 
-   msg.textContent =
-   error.message;
+  }
 
- }
+
+  msg.className =
+  "small";
+
+  msg.textContent =
+  "Logging in...";
+
+
+  try{
+
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+
+    let text =
+    "Login failed.";
+
+
+    if(
+      error.code ===
+      "auth/api-key-not-valid"
+    ){
+
+      text =
+      "Firebase API Key invalid or restricted.";
+
+    }
+
+    else if(
+      error.code ===
+      "auth/invalid-credential"
+    ){
+
+      text =
+      "Email or password is incorrect.";
+
+    }
+
+    else if(
+      error.code ===
+      "auth/user-disabled"
+    ){
+
+      text =
+      "This Firebase account is disabled.";
+
+    }
+
+    else if(
+      error.code ===
+      "auth/invalid-email"
+    ){
+
+      text =
+      "Invalid email.";
+
+    }
+
+    else if(
+      error.code ===
+      "auth/too-many-requests"
+    ){
+
+      text =
+      "Too many attempts. Try again later.";
+
+    }
+
+
+    msg.className =
+    "small error";
+
+    msg.textContent =
+    text;
+
+  }
 
 };
 
 
-/* AUTH STATE */
+/* =================================================
+   AUTH STATE
+================================================= */
 
-onAuthStateChanged(auth,async(user)=>{
+onAuthStateChanged(
+  auth,
+  async user => {
 
- if(!user){
+    if(!user){
 
-   currentAdmin=null;
-   currentAdminData=null;
+      currentAdmin = null;
 
-   document.getElementById("loginSection")
-   .style.display="block";
-
-   document.getElementById("adminPanel")
-   .style.display="none";
-
-   return;
- }
-
- currentAdmin=user;
-
- try{
-
-   const adminRef =
-   doc(db,"admins",user.uid);
-
-   const snap =
-   await getDoc(adminRef);
-
-   if(!snap.exists()){
-
-     await signOut(auth);
-
-     alert("You are not an admin.");
-
-     return;
-   }
-
-   currentAdminData=snap.data();
-
-   if(currentAdminData.active !== true){
-
-     await signOut(auth);
-
-     alert("Your admin account is disabled.");
-
-     return;
-   }
+      document
+      .getElementById("loginBox")
+      .style.display =
+      "block";
 
 
-   document.getElementById("loginSection")
-   .style.display="none";
-
-   document.getElementById("adminPanel")
-   .style.display="block";
-
-
-   document.getElementById("adminWelcome")
-   .textContent =
-   "Logged in as: "+
-   (currentAdminData.name ||
-    currentAdminData.email ||
-    user.email);
+      document
+      .getElementById("adminPanel")
+      .style.display =
+      "none";
 
 
-   /*
-      MAIN ADMIN CHECK
-      UID + ROLE BOTH CHECKED
-   */
-
-   const isSuperAdmin =
-     user.uid === MAIN_ADMIN_UID ||
-     currentAdminData.role === "superAdmin";
+      document
+      .getElementById("superAdminPanel")
+      .style.display =
+      "none";
 
 
-   if(isSuperAdmin){
+      return;
 
-      document.getElementById("adminManagement")
-      .style.display="block";
-
-      await loadAdminList();
-
-   }else{
-
-      document.getElementById("adminManagement")
-      .style.display="none";
-
-   }
+    }
 
 
-   await loadTournament();
+    try{
 
- }catch(error){
-
-   console.error(error);
-
-   alert(
-    "Admin data load error: "+
-    error.message
-   );
-
- }
-
-});
+      const adminRef =
+      doc(
+        db,
+        "admins",
+        user.uid
+      );
 
 
-/* LOGOUT */
+      const adminSnap =
+      await getDoc(adminRef);
+
+
+      if(!adminSnap.exists()){
+
+        await signOut(auth);
+
+        alert(
+          "This account does not have admin access."
+        );
+
+        return;
+
+      }
+
+
+      const data =
+      adminSnap.data();
+
+
+      if(data.active !== true){
+
+        await signOut(auth);
+
+        alert(
+          "Your admin account is disabled."
+        );
+
+        return;
+
+      }
+
+
+      const isSuperAdmin =
+      user.uid === SUPER_ADMIN_UID ||
+      data.role === "superAdmin";
+
+
+      currentAdmin = {
+
+        uid:user.uid,
+
+        ...data,
+
+        isSuperAdmin:isSuperAdmin
+
+      };
+
+
+      document
+      .getElementById("loginBox")
+      .style.display =
+      "none";
+
+
+      document
+      .getElementById("adminPanel")
+      .style.display =
+      "block";
+
+
+      document
+      .getElementById("adminName")
+      .textContent =
+      data.name ||
+      data.email ||
+      "Admin";
+
+
+      document
+      .getElementById("adminRole")
+      .textContent =
+      isSuperAdmin
+      ? "SUPER ADMIN"
+      : "ADMIN";
+
+
+      /* Only Super Admin sees this */
+
+      if(isSuperAdmin){
+
+        document
+        .getElementById("superAdminPanel")
+        .style.display =
+        "block";
+
+
+        loadAdmins();
+
+      }
+
+      else{
+
+        document
+        .getElementById("superAdminPanel")
+        .style.display =
+        "none";
+
+      }
+
+
+      renderAdminTeams();
+
+    }
+
+    catch(error){
+
+      console.error(error);
+
+      alert(
+        "Admin verification failed."
+      );
+
+      await signOut(auth);
+
+    }
+
+  }
+);
+
+
+/* =================================================
+   LOGOUT
+================================================= */
 
 window.logout = async function(){
 
- await signOut(auth);
+  await signOut(auth);
 
 };
 
 
-/* ADD NEW ADMIN */
+/* =================================================
+   ADD TEAM
+================================================= */
 
-window.addNewAdmin = async function(){
+window.addTeam = function(){
 
- if(!currentAdmin){
+  if(!currentAdmin){
 
-   alert("Login first.");
+    alert("Login required.");
 
-   return;
- }
+    return;
 
-
- const isSuperAdmin =
- currentAdmin.uid === MAIN_ADMIN_UID ||
- currentAdminData?.role === "superAdmin";
+  }
 
 
- if(!isSuperAdmin){
-
-   alert("Only Main Admin can add new admin.");
-
-   return;
- }
+  const input =
+  document
+  .getElementById("teamName");
 
 
- const name =
- document.getElementById("newAdminName")
- .value.trim();
-
- const email =
- document.getElementById("newAdminEmail")
- .value.trim();
-
- const password =
- document.getElementById("newAdminPassword")
- .value;
+  const name =
+  input.value.trim();
 
 
- const msg =
- document.getElementById("adminMsg");
+  const msg =
+  document
+  .getElementById("teamMsg");
 
 
- if(!name || !email || !password){
+  if(!name){
 
-   msg.style.color="#ff4040";
+    msg.className =
+    "small error";
 
-   msg.textContent=
-   "সবগুলো ঘর পূরণ করো।";
+    msg.textContent =
+    "Team name required.";
 
-   return;
- }
+    return;
 
-
- if(password.length < 6){
-
-   msg.style.color="#ff4040";
-
-   msg.textContent=
-   "Password minimum 6 characters.";
-
-   return;
- }
+  }
 
 
- try{
-
-   msg.style.color="#aaa";
-
-   msg.textContent=
-   "Creating admin...";
-
-
-   /*
-      SECONDARY AUTH ব্যবহার করছি,
-      তাই Main Admin logout হবে না।
-   */
-
-   const result =
-   await createUserWithEmailAndPassword(
-     secondaryAuth,
-     email,
-     password
-   );
+  const exists =
+  tournament.teams.some(
+    team =>
+    team.name.toLowerCase() ===
+    name.toLowerCase()
+  );
 
 
-   const newUid =
-   result.user.uid;
+  if(exists){
+
+    msg.className =
+    "small error";
+
+    msg.textContent =
+    "Team already exists.";
+
+    return;
+
+  }
 
 
-   await setDoc(
-     doc(db,"admins",newUid),
-     {
-       name:name,
-       email:email,
-       role:"admin",
-       active:true,
-       createdAt:serverTimestamp(),
-       createdBy:currentAdmin.uid
-     }
-   );
+  tournament.teams.push({
+
+    id:
+    Date.now().toString(),
+
+    name:name,
+
+    matches:
+    Array.from(
+      {length:7},
+      () => ({
+        kill:0,
+        place:0
+      })
+    )
+
+  });
 
 
-   await signOut(secondaryAuth);
+  input.value = "";
 
 
-   msg.style.color="#20e050";
+  msg.className =
+  "small success";
 
-   msg.textContent=
-   "✅ New Admin successfully added.";
-
-
-   document.getElementById("newAdminName")
-   .value="";
-
-   document.getElementById("newAdminEmail")
-   .value="";
-
-   document.getElementById("newAdminPassword")
-   .value="";
+  msg.textContent =
+  "Team added.";
 
 
-   await loadAdminList();
+  renderAdminTeams();
 
- }catch(error){
-
-   console.error(error);
-
-   msg.style.color="#ff4040";
-
-   msg.textContent=
-   error.message;
-
- }
+  renderStandings();
 
 };
 
 
-/* LOAD ADMIN LIST */
+/* =================================================
+   DELETE TEAM
+================================================= */
 
-async function loadAdminList(){
+window.deleteTeam = function(id){
 
- const list =
- document.getElementById("adminList");
+  if(!currentAdmin){
 
- list.innerHTML=
- "<p style='color:#aaa'>Loading admins...</p>";
+    alert("Login required.");
 
+    return;
 
- try{
-
-   const snapshot =
-   await getDocs(
-     collection(db,"admins")
-   );
+  }
 
 
-   list.innerHTML="";
+  if(
+    !confirm(
+      "Delete this team?"
+    )
+  )
+
+    return;
 
 
-   snapshot.forEach(item=>{
-
-     const data=item.data();
-
-     const uid=item.id;
-
-     const div=
-     document.createElement("div");
-
-     div.className="admin-item";
+  tournament.teams =
+  tournament.teams.filter(
+    team => team.id !== id
+  );
 
 
-     const status =
-       data.active === true
-       ? `<span class="active">ACTIVE</span>`
-       : `<span class="disabled">DISABLED</span>`;
+  renderAdminTeams();
 
-
-     const role =
-       data.role === "superAdmin"
-       ? "👑 SUPER ADMIN"
-       : "ADMIN";
-
-
-     const buttons =
-       uid === MAIN_ADMIN_UID
-       ? `<span class="top-badge">MAIN ADMIN</span>`
-       : `
-         <button class="gray"
-           onclick="toggleAdmin('${uid}',${data.active===true})">
-           ${data.active===true ? "DISABLE":"ENABLE"}
-         </button>
-
-         <button class="danger"
-           onclick="deleteAdmin('${uid}')">
-           DELETE
-         </button>
-       `;
-
-
-     div.innerHTML=`
-
-       <div class="admin-info">
-
-         <strong>
-         ${escapeHTML(data.name || "Admin")}
-         </strong>
-
-         <br>
-
-         <small>
-         ${escapeHTML(data.email || "")}
-         </small>
-
-         <br>
-
-         <small>
-         ${role} • ${status}
-         </small>
-
-       </div>
-
-       <div>
-       ${buttons}
-       </div>
-     `;
-
-
-     list.appendChild(div);
-
-   });
-
-
- }catch(error){
-
-   console.error(error);
-
-   list.innerHTML=
-   "<p style='color:#ff4040'>"+
-   error.message+
-   "</p>";
-
- }
-
-}
-
-
-/* TOGGLE ADMIN */
-
-window.toggleAdmin = async function(uid,newState){
-
- if(!confirm(
-   newState
-   ? "Disable this admin?"
-   : "Enable this admin?"
- )) return;
-
-
- try{
-
-   await updateDoc(
-     doc(db,"admins",uid),
-     {
-       active:!newState
-     }
-   );
-
-
-   await loadAdminList();
-
-
- }catch(error){
-
-   alert(error.message);
-
- }
+  renderStandings();
 
 };
 
 
-/* DELETE ADMIN ACCESS */
-
-window.deleteAdmin = async function(uid){
-
- if(uid===MAIN_ADMIN_UID){
-
-   alert("Main Admin cannot be deleted.");
-
-   return;
- }
-
-
- if(!confirm(
-   "এই admin-এর access delete করবে?"
- )) return;
-
-
- try{
-
-   /*
-      এখানে Firestore admin document delete হবে।
-      Firebase Authentication account delete হবে না।
-      ফলে login করলেও admin access পাবে না।
-   */
-
-   await deleteDoc(
-     doc(db,"admins",uid)
-   );
-
-
-   await loadAdminList();
-
-
- }catch(error){
-
-   alert(error.message);
-
- }
-
-};
-
-
-/* ESCAPE */
-
-function escapeHTML(value){
-
- return String(value)
- .replaceAll("&","&amp;")
- .replaceAll("<","&lt;")
- .replaceAll(">","&gt;")
- .replaceAll('"',"&quot;")
- .replaceAll("'","&#039;");
-
-}
-
-
-/* ADD TEAM */
-
-window.addTeam=function(){
-
- const name=
- document.getElementById("teamName")
- .value.trim();
-
-
- if(!name){
-
-   alert("Team name দাও।");
-
-   return;
- }
-
-
- teams.push({
-
-   id:Date.now(),
-
-   name:name,
-
-   matches:Array.from(
-     {length:7},
-     ()=>({
-       kills:0,
-       place:0
-     })
-   )
-
- });
-
-
- document.getElementById("teamName")
- .value="";
-
-
- renderTeams();
-
- renderStandings();
-
-};
-
-
-/* DELETE TEAM */
-
-window.deleteTeam=function(id){
-
- if(!confirm("এই team delete করবে?"))
- return;
-
-
- teams=
- teams.filter(team=>team.id!==id);
-
-
- renderTeams();
-
- renderStandings();
-
-};
-
-
-/* RENDER TEAMS */
-
-function renderTeams(){
-
- const box=
- document.getElementById("teams");
-
- box.innerHTML="";
-
-
- teams.forEach(team=>{
-
-   const div=
-   document.createElement("div");
-
-   div.className="team";
-
-
-   let html=`
-
-     <div class="team-title">
-
-       <strong>
-       ${escapeHTML(team.name)}
-       </strong>
-
-       <button class="danger"
-       onclick="deleteTeam(${team.id})">
-       DELETE
-       </button>
-
-     </div>
-
-     <div class="matches">
-   `;
-
-
-   for(let i=0;i<7;i++){
-
-     html+=`
-
-       <div class="match">
-
-         <b>MATCH ${i+1}</b>
-
-         <input
-         type="number"
-         min="0"
-         value="${team.matches[i].kills}"
-         onchange="updateMatch(${team.id},${i},'kills',this.value)"
-         placeholder="KILL">
-
-         <input
-         type="number"
-         min="0"
-         value="${team.matches[i].place}"
-         onchange="updateMatch(${team.id},${i},'place',this.value)"
-         placeholder="PLACE">
-
-       </div>
-
-     `;
-
-   }
-
-
-   html+=`</div>`;
-
-
-   div.innerHTML=html;
-
-   box.appendChild(div);
-
- });
-
-}
-
-
-/* UPDATE MATCH */
-
-window.updateMatch=function(
- id,
- matchIndex,
- type,
- value
+/* =================================================
+   UPDATE MATCH
+================================================= */
+
+window.updateMatch =
+function(
+  teamId,
+  matchIndex,
+  field,
+  value
 ){
 
- const team=
- teams.find(t=>t.id===id);
-
- if(!team)return;
+  if(!currentAdmin)
+    return;
 
 
- team.matches[matchIndex][type]=
- Math.max(0,Number(value)||0);
+  const team =
+  tournament.teams.find(
+    t => t.id === teamId
+  );
 
 
- renderStandings();
+  if(!team)
+    return;
+
+
+  team.matches[
+    matchIndex
+  ][field] =
+  Math.max(
+    0,
+    Number(value) || 0
+  );
+
+
+  renderStandings();
 
 };
 
 
-/* POINT CALCULATION */
+/* =================================================
+   RENDER ADMIN TEAMS
+================================================= */
 
-function getTeamStats(team){
+function renderAdminTeams(){
 
- let kills=0;
-
- let place=0;
-
-
- team.matches.forEach(match=>{
-
-   kills += Number(match.kills)||0;
-
-   place += Number(match.place)||0;
-
- });
+  const box =
+  document
+  .getElementById("adminTeams");
 
 
- return{
+  if(!box)
+    return;
 
-   kills:kills,
 
-   placement:place,
+  box.innerHTML = "";
 
-   total:kills+place
 
- };
+  tournament.teams.forEach(team => {
+
+    const stats =
+    calculateTeam(team);
+
+
+    const div =
+    document.createElement("div");
+
+
+    div.className =
+    "team-box";
+
+
+    let html = `
+
+      <div class="team-title">
+
+        <h3>
+          ${escapeHTML(team.name)}
+        </h3>
+
+        <button
+          class="delete-btn"
+          onclick="
+            deleteTeam('${team.id}')
+          "
+        >
+          DELETE
+        </button>
+
+      </div>
+
+      <div class="match-grid">
+    `;
+
+
+    team.matches.forEach(
+      (match,index)=>{
+
+        html += `
+
+          <div class="match">
+
+            <b>
+              MATCH ${index+1}
+            </b>
+
+            <input
+              type="number"
+              min="0"
+              value="${match.kill}"
+              placeholder="KILL"
+              onchange="
+                updateMatch(
+                  '${team.id}',
+                  ${index},
+                  'kill',
+                  this.value
+                )
+              "
+            >
+
+            <input
+              type="number"
+              min="0"
+              value="${match.place}"
+              placeholder="PLACE"
+              onchange="
+                updateMatch(
+                  '${team.id}',
+                  ${index},
+                  'place',
+                  this.value
+                )
+              "
+            >
+
+          </div>
+
+        `;
+
+      }
+    );
+
+
+    html += `
+
+      </div>
+
+      <br>
+
+      <div class="small">
+
+        KILL:
+        <b>${stats.kills}</b>
+
+        &nbsp; | &nbsp;
+
+        PLACEMENT:
+        <b>${stats.placement}</b>
+
+        &nbsp; | &nbsp;
+
+        TOTAL:
+        <b>${stats.total}</b>
+
+      </div>
+
+    `;
+
+
+    div.innerHTML =
+    html;
+
+
+    box.appendChild(div);
+
+  });
 
 }
 
 
-/* STANDINGS */
-
-function getSortedTeams(){
-
- return [...teams].sort((a,b)=>{
-
-   const A=getTeamStats(a);
-
-   const B=getTeamStats(b);
-
-
-   if(B.total!==A.total)
-   return B.total-A.total;
-
-
-   if(B.kills!==A.kills)
-   return B.kills-A.kills;
-
-
-   return B.placement-A.placement;
-
- });
-
-}
-
-
-/* RENDER STANDINGS */
+/* =================================================
+   RENDER STANDINGS
+================================================= */
 
 function renderStandings(){
 
- const body=
- document.getElementById("standingsBody");
-
- body.innerHTML="";
-
-
- const sorted=
- getSortedTeams();
+  const body =
+  document
+  .getElementById("standingsBody");
 
 
- sorted.forEach((team,index)=>{
-
-   const stats=
-   getTeamStats(team);
+  body.innerHTML = "";
 
 
-   const tr=
-   document.createElement("tr");
+  const teams =
+  sortedTeams();
 
 
-   if(index < qualifyCount){
+  teams.forEach(
+    (team,index)=>{
 
-     tr.classList.add("qualify");
-
-   }
-
-
-   let badge="";
+      const stats =
+      calculateTeam(team);
 
 
-   if(index===0)
-   badge=" 🏆";
-
-   else if(index===1)
-   badge=" 🥈";
-
-   else if(index===2)
-   badge=" 🥉";
+      const row =
+      document.createElement("tr");
 
 
-   tr.innerHTML=`
+      row.innerHTML = `
 
-     <td>
-     ${index+1}
-     </td>
+        <td>
+          ${index+1}
+        </td>
 
-     <td>
-     <strong>
-     ${escapeHTML(team.name)}
-     </strong>
-     ${badge}
-     </td>
+        <td>
+          <b>
+            ${escapeHTML(team.name)}
+          </b>
+        </td>
 
-     <td>
-     ${stats.kills}
-     </td>
+        <td>
+          ${stats.matches}/7
+        </td>
 
-     <td>
-     ${stats.placement}
-     </td>
+        <td>
+          ${stats.kills}
+        </td>
 
-     <td>
-     <strong>
-     ${stats.total}
-     </strong>
-     </td>
+        <td>
+          ${stats.placement}
+        </td>
 
-   `;
+        <td>
+          <b>
+            ${stats.total}
+          </b>
+        </td>
+
+      `;
 
 
-   body.appendChild(tr);
+      body.appendChild(row);
 
- });
+    }
+  );
 
 }
 
 
-/* QUALIFY */
+/* =================================================
+   SAVE TO FIRESTORE
+================================================= */
 
-window.setQualify=function(){
+window.saveTournament =
+async function(){
 
- const value=
- Number(
-   document.getElementById("qualifyCount")
-   .value
- );
+  if(!currentAdmin){
 
+    alert(
+      "Admin login required."
+    );
 
- qualifyCount=
- Math.max(1,value||1);
+    return;
 
-
- renderStandings();
-
-};
+  }
 
 
-/* SAVE */
+  try{
 
-window.saveTournament=async function(){
+    await setDoc(
+      doc(
+        db,
+        "tournament",
+        "current"
+      ),
+      {
 
- if(!currentAdmin){
+        date:
+        document
+        .getElementById(
+          "tournamentDate"
+        )
+        .value,
 
-   alert("Login first.");
+        time:
+        document
+        .getElementById(
+          "tournamentTime"
+        )
+        .value,
 
-   return;
- }
+        teams:
+        tournament.teams,
 
+        updatedAt:
+        serverTimestamp(),
 
- try{
+        updatedBy:
+        currentAdmin.uid
 
-   await setDoc(
-     doc(db,"tournament","current"),
-     {
-
-       teams:teams,
-
-       qualifyCount:qualifyCount,
-
-       eventDate:
-       document.getElementById("eventDate")
-       .value,
-
-       eventTime:
-       document.getElementById("eventTime")
-       .value,
-
-       updatedAt:serverTimestamp(),
-
-       updatedBy:currentAdmin.uid
-
-     }
-   );
-
-
-   alert("✅ Tournament saved successfully.");
-
- }catch(error){
-
-   console.error(error);
-
-   alert(
-     "Save error: "+
-     error.message
-   );
-
- }
-
-};
+      }
+    );
 
 
-/* LOAD */
-
-window.loadTournament=async function(){
-
- try{
-
-   const snap=
-   await getDoc(
-     doc(db,"tournament","current")
-   );
+    document
+    .getElementById("saveMsg")
+    .className =
+    "small success";
 
 
-   if(!snap.exists()){
-
-     renderTeams();
-
-     renderStandings();
-
-     return;
-
-   }
+    document
+    .getElementById("saveMsg")
+    .textContent =
+    "Tournament saved successfully.";
 
 
-   const data=snap.data();
+    publicLoad();
+
+  }
+
+  catch(error){
+
+    console.error(error);
 
 
-   teams=
-   Array.isArray(data.teams)
-   ? data.teams
-   : [];
+    document
+    .getElementById("saveMsg")
+    .className =
+    "small error";
 
 
-   qualifyCount=
-   Number(data.qualifyCount)||4;
+    document
+    .getElementById("saveMsg")
+    .textContent =
+    "Save failed: " +
+    error.message;
 
-
-   document.getElementById("qualifyCount")
-   .value=qualifyCount;
-
-
-   document.getElementById("eventDate")
-   .value=data.eventDate||"";
-
-
-   document.getElementById("eventTime")
-   .value=data.eventTime||"";
-
-
-   renderTeams();
-
-   renderStandings();
-
-
- }catch(error){
-
-   console.error(error);
-
-   alert(
-     "Load error: "+
-     error.message
-   );
-
- }
+  }
 
 };
 
 
-/* RESET */
+/* =================================================
+   PUBLIC LOAD
+================================================= */
 
-window.resetTournament=function(){
+async function publicLoad(){
 
- if(!confirm(
-   "সব team এবং result reset করবে?"
- )) return;
+  try{
 
-
- teams=[];
-
- qualifyCount=4;
-
-
- document.getElementById("qualifyCount")
- .value=4;
-
-
- document.getElementById("eventDate")
- .value="";
+    const snap =
+    await getDoc(
+      doc(
+        db,
+        "tournament",
+        "current"
+      )
+    );
 
 
- document.getElementById("eventTime")
- .value="";
+    if(snap.exists()){
+
+      const data =
+      snap.data();
 
 
- renderTeams();
+      tournament.date =
+      data.date || "";
 
- renderStandings();
+
+      tournament.time =
+      data.time || "";
+
+
+      tournament.teams =
+      Array.isArray(data.teams)
+      ? data.teams
+      : [];
+
+
+      document
+      .getElementById(
+        "tournamentDate"
+      )
+      .value =
+      tournament.date;
+
+
+      document
+      .getElementById(
+        "tournamentTime"
+      )
+      .value =
+      tournament.time;
+
+
+      document
+      .getElementById(
+        "publicDate"
+      )
+      .textContent =
+      formatDate(
+        tournament.date
+      );
+
+
+      document
+      .getElementById(
+        "publicTime"
+      )
+      .textContent =
+      formatTime(
+        tournament.time
+      );
+
+    }
+
+
+    renderStandings();
+
+
+    if(currentAdmin)
+      renderAdminTeams();
+
+  }
+
+  catch(error){
+
+    console.error(
+      "Public load error:",
+      error
+    );
+
+  }
+
+}
+
+
+/* =================================================
+   RESET
+================================================= */
+
+window.resetTournament =
+async function(){
+
+  if(!currentAdmin){
+
+    alert(
+      "Admin login required."
+    );
+
+    return;
+
+  }
+
+
+  if(
+    !confirm(
+      "Are you sure? All team data will be deleted."
+    )
+  )
+
+    return;
+
+
+  tournament.teams = [];
+
+
+  try{
+
+    await setDoc(
+      doc(
+        db,
+        "tournament",
+        "current"
+      ),
+      {
+
+        date:
+        document
+        .getElementById(
+          "tournamentDate"
+        )
+        .value,
+
+        time:
+        document
+        .getElementById(
+          "tournamentTime"
+        )
+        .value,
+
+        teams:[],
+
+        updatedAt:
+        serverTimestamp(),
+
+        updatedBy:
+        currentAdmin.uid
+
+      }
+    );
+
+
+    renderAdminTeams();
+
+    renderStandings();
+
+
+    alert(
+      "Tournament reset successfully."
+    );
+
+  }
+
+  catch(error){
+
+    alert(
+      "Reset failed: " +
+      error.message
+    );
+
+  }
 
 };
 
 
-/* DOWNLOAD IMAGE */
+/* =================================================
+   CREATE ADMIN
+   SUPER ADMIN ONLY
+================================================= */
 
-window.downloadImage=function(){
+window.createAdmin =
+async function(){
 
- const sorted=
- getSortedTeams();
+  /* Front-end protection */
 
+  if(
+    !currentAdmin ||
+    currentAdmin.isSuperAdmin !== true
+  ){
 
- const canvas=
- document.createElement("canvas");
+    alert(
+      "SUPER ADMIN ONLY."
+    );
 
+    return;
 
- canvas.width=1080;
-
- canvas.height=1920;
-
-
- const ctx=
- canvas.getContext("2d");
-
-
- ctx.fillStyle="#080808";
-
- ctx.fillRect(
-   0,0,
-   canvas.width,
-   canvas.height
- );
+  }
 
 
- ctx.fillStyle="#ff2020";
-
- ctx.font="bold 55px Arial";
-
- ctx.textAlign="center";
-
- ctx.fillText(
-   "XENYX E-SPORTS",
-   540,
-   100
- );
+  const name =
+  document
+  .getElementById(
+    "newAdminName"
+  )
+  .value
+  .trim();
 
 
- ctx.fillStyle="#ffffff";
-
- ctx.font="bold 38px Arial";
-
- ctx.fillText(
-   "TOURNAMENT POINT TABLE",
-   540,
-   160
- );
+  const email =
+  document
+  .getElementById(
+    "newAdminEmail"
+  )
+  .value
+  .trim();
 
 
- let y=250;
+  const password =
+  document
+  .getElementById(
+    "newAdminPassword"
+  )
+  .value;
 
 
- sorted.forEach((team,index)=>{
-
-   const stats=
-   getTeamStats(team);
-
-
-   ctx.fillStyle=
-   index<qualifyCount
-   ? "#073c18"
-   : "#151515";
+  const msg =
+  document
+  .getElementById(
+    "adminMsg"
+  );
 
 
-   ctx.fillRect(
-     60,
-     y-45,
-     960,
-     100
-   );
+  if(!name || !email || !password){
+
+    msg.className =
+    "small error";
+
+    msg.textContent =
+    "All fields are required.";
+
+    return;
+
+  }
 
 
-   ctx.fillStyle="#ffffff";
+  if(password.length < 6){
 
-   ctx.textAlign="left";
+    msg.className =
+    "small error";
 
-   ctx.font="bold 28px Arial";
+    msg.textContent =
+    "Password must be at least 6 characters.";
 
+    return;
 
-   ctx.fillText(
-     `${index+1}. ${team.name}`,
-     85,
-     y
-   );
-
-
-   ctx.textAlign="right";
-
-   ctx.fillText(
-     `K ${stats.kills}   P ${stats.placement}   TOTAL ${stats.total}`,
-     995,
-     y
-   );
+  }
 
 
-   y+=120;
-
- });
+  let secondaryApp = null;
 
 
- ctx.textAlign="center";
+  try{
 
- ctx.fillStyle="#aaa";
+    msg.className =
+    "small";
 
- ctx.font="22px Arial";
-
- const date=
- document.getElementById("eventDate")
- .value;
-
- const time=
- document.getElementById("eventTime")
- .value;
+    msg.textContent =
+    "Creating admin...";
 
 
- ctx.fillText(
-   `${date} ${time}`,
-   540,
-   1840
- );
+    secondaryApp =
+    initializeSecondaryApp(
+      firebaseConfig,
+      "SecondaryApp-" +
+      Date.now()
+    );
 
 
- const link=
- document.createElement("a");
+    const secondaryAuth =
+    getSecondaryAuth(
+      secondaryApp
+    );
 
 
- link.download="pointtabble.png";
+    const credential =
+    await createUserWithEmailAndPassword(
+      secondaryAuth,
+      email,
+      password
+    );
 
- link.href=
- canvas.toDataURL("image/png");
+
+    /* Firestore security rules
+       will allow this only for Super Admin */
+
+    await setDoc(
+      doc(
+        db,
+        "admins",
+        credential.user.uid
+      ),
+      {
+
+        name:name,
+
+        email:email,
+
+        role:"admin",
+
+        active:true,
+
+        createdAt:
+        serverTimestamp(),
+
+        createdBy:
+        currentAdmin.uid
+
+      }
+    );
 
 
- link.click();
+    await deleteApp(
+      secondaryApp
+    );
+
+    secondaryApp = null;
+
+
+    document
+    .getElementById(
+      "newAdminName"
+    )
+    .value = "";
+
+
+    document
+    .getElementById(
+      "newAdminEmail"
+    )
+    .value = "";
+
+
+    document
+    .getElementById(
+      "newAdminPassword"
+    )
+    .value = "";
+
+
+    msg.className =
+    "small success";
+
+    msg.textContent =
+    "Admin created successfully.";
+
+
+    loadAdmins();
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+
+    if(secondaryApp){
+
+      try{
+
+        await deleteApp(
+          secondaryApp
+        );
+
+      }
+
+      catch(e){}
+
+    }
+
+
+    msg.className =
+    "small error";
+
+
+    if(
+      error.code ===
+      "auth/email-already-in-use"
+    ){
+
+      msg.textContent =
+      "This email already exists.";
+
+    }
+
+    else if(
+      error.code ===
+      "auth/invalid-email"
+    ){
+
+      msg.textContent =
+      "Invalid email.";
+
+    }
+
+    else if(
+      error.code ===
+      "auth/weak-password"
+    ){
+
+      msg.textContent =
+      "Password is too weak.";
+
+    }
+
+    else{
+
+      msg.textContent =
+      "Admin creation failed: " +
+      error.message;
+
+    }
+
+  }
 
 };
 
 
-/* INITIAL */
+/* =================================================
+   LOAD ADMINS
+   SUPER ADMIN ONLY
+================================================= */
 
-renderTeams();
+async function loadAdmins(){
 
-renderStandings();
+  if(
+    !currentAdmin ||
+    currentAdmin.isSuperAdmin !== true
+  ){
+
+    return;
+
+  }
+
+
+  const box =
+  document
+  .getElementById(
+    "adminsList"
+  );
+
+
+  box.innerHTML =
+  "<p class='small'>Loading...</p>";
+
+
+  try{
+
+    const snap =
+    await getDocs(
+      collection(
+        db,
+        "admins"
+      )
+    );
+
+
+    box.innerHTML = "";
+
+
+    snap.forEach(
+      item=>{
+
+        const data =
+        item.data();
+
+
+        const div =
+        document
+        .createElement("div");
+
+
+        div.className =
+        "admin-item";
+
+
+        const active =
+        data.active === true;
+
+
+        const isMainSuper =
+        item.id ===
+        SUPER_ADMIN_UID;
+
+
+        div.innerHTML = `
+
+          <b>
+            ${escapeHTML(
+              data.name ||
+              "Admin"
+            )}
+          </b>
+
+          <br>
+
+          <span class="small">
+            ${escapeHTML(
+              data.email || ""
+            )}
+          </span>
+
+          <br>
+
+          <span class="small">
+
+            Role:
+            ${escapeHTML(
+              data.role ||
+              "admin"
+            )}
+
+            |
+
+            Status:
+
+            <span class="${
+              active
+              ? "status-active"
+              : "status-disabled"
+            }">
+
+              ${
+                active
+                ? "ACTIVE"
+                : "DISABLED"
+              }
+
+            </span>
+
+          </span>
+
+          <br><br>
+
+          ${
+            isMainSuper
+
+            ?
+
+            `<span class="small">
+              MAIN SUPER ADMIN
+            </span>`
+
+            :
+
+            `
+
+            <button
+              onclick="
+                toggleAdmin(
+                  '${item.id}',
+                  ${active}
+                )
+              "
+            >
+              ${
+                active
+                ? "DISABLE"
+                : "ENABLE"
+              }
+            </button>
+
+
+            <button
+              class="danger"
+              onclick="
+                deleteAdmin(
+                  '${item.id}'
+                )
+              "
+            >
+              DELETE ACCESS
+            </button>
+
+            `
+
+          }
+
+        `;
+
+
+        box.appendChild(div);
+
+      }
+    );
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+
+    box.innerHTML =
+    `
+      <p class="error">
+        Failed to load admins:
+        ${escapeHTML(
+          error.message
+        )}
+      </p>
+    `;
+
+  }
+
+}
+
+
+/* =================================================
+   TOGGLE ADMIN
+   SUPER ADMIN ONLY
+================================================= */
+
+window.toggleAdmin =
+async function(
+  uid,
+  currentStatus
+){
+
+  if(
+    !currentAdmin ||
+    currentAdmin.isSuperAdmin !== true
+  ){
+
+    alert(
+      "SUPER ADMIN ONLY."
+    );
+
+    return;
+
+  }
+
+
+  if(uid === SUPER_ADMIN_UID){
+
+    alert(
+      "Main Super Admin cannot be disabled."
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    await updateDoc(
+      doc(
+        db,
+        "admins",
+        uid
+      ),
+      {
+
+        active:
+        !currentStatus
+
+      }
+    );
+
+
+    loadAdmins();
+
+  }
+
+  catch(error){
+
+    alert(
+      "Update failed: " +
+      error.message
+    );
+
+  }
+
+};
+
+
+/* =================================================
+   DELETE ADMIN ACCESS
+   SUPER ADMIN ONLY
+================================================= */
+
+window.deleteAdmin =
+async function(uid){
+
+  if(
+    !currentAdmin ||
+    currentAdmin.isSuperAdmin !== true
+  ){
+
+    alert(
+      "SUPER ADMIN ONLY."
+    );
+
+    return;
+
+  }
+
+
+  if(uid === SUPER_ADMIN_UID){
+
+    alert(
+      "Main Super Admin cannot be deleted."
+    );
+
+    return;
+
+  }
+
+
+  if(
+    !confirm(
+      "Delete this admin's Firestore access?"
+    )
+  )
+
+    return;
+
+
+  try{
+
+    await deleteDoc(
+      doc(
+        db,
+        "admins",
+        uid
+      )
+    );
+
+
+    loadAdmins();
+
+  }
+
+  catch(error){
+
+    alert(
+      "Delete failed: " +
+      error.message
+    );
+
+  }
+
+};
+
+
+/* =================================================
+   ESCAPE HTML
+================================================= */
+
+function escapeHTML(value){
+
+  return String(value)
+
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+
+    .replace(
+      /</g,
+      "&lt;"
+    )
+
+    .replace(
+      />/g,
+      "&gt;"
+    )
+
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
+}
+
+
+/* =================================================
+   DATE FORMAT
+================================================= */
+
+function formatDate(date){
+
+  if(!date)
+    return "--";
+
+
+  const d =
+  new Date(
+    date +
+    "T00:00:00"
+  );
+
+
+  if(isNaN(d))
+    return date;
+
+
+  return d.toLocaleDateString(
+    "en-GB",
+    {
+
+      day:"2-digit",
+      month:"2-digit",
+      year:"numeric"
+
+    }
+  );
+
+}
+
+
+/* =================================================
+   TIME FORMAT
+================================================= */
+
+function formatTime(time){
+
+  if(!time)
+    return "--";
+
+
+  const parts =
+  time.split(":");
+
+
+  let h =
+  Number(parts[0]);
+
+
+  const m =
+  parts[1] ||
+  "00";
+
+
+  const ampm =
+  h >= 12
+  ? "PM"
+  : "AM";
+
+
+  h =
+  h % 12 ||
+  12;
+
+
+  return (
+    h +
+    ":" +
+    m +
+    " " +
+    ampm
+  );
+
+}
+
+
+/* =================================================
+   DOWNLOAD IMAGE
+================================================= */
+
+window.downloadImage =
+function(){
+
+  const bg =
+  new Image();
+
+
+  bg.src =
+  "background.png";
+
+
+  bg.onload =
+  function(){
+
+    const canvas =
+    document
+    .createElement(
+      "canvas"
+    );
+
+
+    canvas.width =
+    1080;
+
+
+    canvas.height =
+    1920;
+
+
+    const ctx =
+    canvas.getContext(
+      "2d"
+    );
+
+
+    ctx.drawImage(
+      bg,
+      0,
+      0,
+      1080,
+      1920
+    );
+
+
+    ctx.fillStyle =
+    "rgba(0,0,0,0.62)";
+
+
+    ctx.fillRect(
+      0,
+      0,
+      1080,
+      1920
+    );
+
+
+    ctx.textAlign =
+    "center";
+
+
+    ctx.fillStyle =
+    "#ffffff";
+
+
+    /* HEADER */
+
+    ctx.font =
+    "bold 48px Arial";
+
+
+    ctx.fillText(
+      "SEASON 01 - QUALIFIERS",
+      540,
+      100
+    );
+
+
+    ctx.font =
+    "bold 68px Arial";
+
+
+    ctx.fillText(
+      "XENYX E-SPORTS",
+      540,
+      175
+    );
+
+
+    ctx.font =
+    "bold 30px Arial";
+
+
+    ctx.fillText(
+      "PRESENTS",
+      540,
+      225
+    );
+
+
+    ctx.fillText(
+      "DATE: " +
+      formatDate(
+        tournament.date
+      ),
+      540,
+      275
+    );
+
+
+    ctx.fillText(
+      "TIME: " +
+      formatTime(
+        tournament.time
+      ),
+      540,
+      315
+    );
+
+
+    ctx.font =
+    "bold 44px Arial";
+
+
+    ctx.fillText(
+      "OVERALL STANDINGS",
+      540,
+      410
+    );
+
+
+    /* TABLE */
+
+    const startX =
+    55;
+
+    const startY =
+    465;
+
+    const tableWidth =
+    970;
+
+    const rowH =
+    78;
+
+
+    const cols =
+    [
+      90,
+      360,
+      120,
+      120,
+      140,
+      140
+    ];
+
+
+    const headers =
+    [
+      "RANK",
+      "TEAM",
+      "MATCH",
+      "KILL",
+      "PLACEMENT",
+      "TOTAL"
+    ];
+
+
+    let x =
+    startX;
+
+
+    ctx.font =
+    "bold 24px Arial";
+
+
+    headers.forEach(
+      (header,i)=>{
+
+        ctx.fillStyle =
+        "#e50909";
+
+
+        ctx.fillRect(
+          x,
+          startY,
+          cols[i],
+          rowH
+        );
+
+
+        ctx.strokeStyle =
+        "#ffffff";
+
+
+        ctx.strokeRect(
+          x,
+          startY,
+          cols[i],
+          rowH
+        );
+
+
+        ctx.fillStyle =
+        "#ffffff";
+
+
+        ctx.fillText(
+          header,
+          x +
+          cols[i]/2,
+          startY +
+          48
+        );
+
+
+        x +=
+        cols[i];
+
+      }
+    );
+
+
+    const teams =
+    sortedTeams();
+
+
+    teams.forEach(
+      (team,index)=>{
+
+        const stats =
+        calculateTeam(
+          team
+        );
+
+
+        const y =
+        startY +
+        rowH *
+        (index + 1);
+
+
+        const values =
+        [
+
+          String(
+            index + 1
+          ),
+
+          team.name,
+
+          stats.matches +
+          "/7",
+
+          String(
+            stats.kills
+          ),
+
+          String(
+            stats.placement
+          ),
+
+          String(
+            stats.total
+          )
+
+        ];
+
+
+        let xx =
+        startX;
+
+
+        values.forEach(
+          (value,i)=>{
+
+            ctx.fillStyle =
+            "rgba(10,10,10,0.78)";
+
+
+            ctx.fillRect(
+              xx,
+              y,
+              cols[i],
+              rowH
+            );
+
+
+            ctx.strokeStyle =
+            "#ffffff";
+
+
+            ctx.strokeRect(
+              xx,
+              y,
+              cols[i],
+              rowH
+            );
+
+
+            ctx.fillStyle =
+            "#ffffff";
+
+
+            ctx.font =
+            i === 1
+            ? "bold 25px Arial"
+            : "bold 24px Arial";
+
+
+            let text =
+            String(value);
+
+
+            if(
+              i === 1 &&
+              text.length > 20
+            ){
+
+              text =
+              text.substring(
+                0,
+                20
+              ) +
+              "...";
+
+            }
+
+
+            ctx.fillText(
+              text,
+              xx +
+              cols[i]/2,
+              y +
+              48
+            );
+
+
+            xx +=
+            cols[i];
+
+          }
+        );
+
+      }
+    );
+
+
+    /* FOOTER */
+
+    ctx.font =
+    "bold 44px Arial";
+
+
+    ctx.fillText(
+      "XENYX E-SPORTS",
+      540,
+      1700
+    );
+
+
+    ctx.font =
+    "bold 38px Arial";
+
+
+    ctx.fillText(
+      "FREE FIRE",
+      540,
+      1760
+    );
+
+
+    ctx.fillText(
+      "MAX",
+      540,
+      1820
+    );
+
+
+    ctx.font =
+    "bold 30px Arial";
+
+
+    ctx.fillText(
+      "XENYX E-SPORTS",
+      540,
+      1870
+    );
+
+
+    const link =
+    document
+    .createElement(
+      "a"
+    );
+
+
+    link.download =
+    "XENYX-OVERALL-STANDINGS.png";
+
+
+    link.href =
+    canvas.toDataURL(
+      "image/png"
+    );
+
+
+    link.click();
+
+  };
+
+
+  bg.onerror =
+  function(){
+
+    alert(
+      "background.png পাওয়া যাচ্ছে না! " +
+      "index.html এর পাশে background.png রাখো।"
+    );
+
+  };
+
+};
+
+
+/* =================================================
+   START
+================================================= */
+
+publicLoad();
 
 </script>
 
