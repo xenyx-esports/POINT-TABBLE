@@ -2,250 +2,235 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>XENYX E-SPORTS - Tournament Standings</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>XENYX Tournament Points</title>
 
 <style>
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:Arial,Helvetica,sans-serif;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
 }
 
 body{
-    background:#0b0b0b;
-    color:#fff;
-    padding:15px;
+  background:#080808;
+  color:#fff;
+  padding:15px;
 }
 
 .container{
-    max-width:1100px;
-    margin:auto;
+  max-width:1100px;
+  margin:auto;
 }
 
-h1{
-    text-align:center;
-    font-size:28px;
-    margin:10px 0 5px;
-    color:#ff3030;
-    font-weight:900;
+header{
+  text-align:center;
+  padding:20px 0;
+  border-bottom:1px solid #333;
+  margin-bottom:20px;
 }
 
-.subtitle{
-    text-align:center;
-    color:#aaa;
-    margin-bottom:20px;
+header h1{
+  color:#ff2020;
+  font-size:28px;
+}
+
+header p{
+  color:#aaa;
+  margin-top:6px;
 }
 
 .card{
-    background:#151515;
-    border:1px solid #292929;
-    border-radius:12px;
-    padding:15px;
-    margin-bottom:15px;
+  background:#111;
+  border:1px solid #292929;
+  border-radius:14px;
+  padding:18px;
+  margin-bottom:18px;
 }
 
 .card h2{
-    color:#ff3030;
-    font-size:20px;
-    margin-bottom:12px;
+  color:#ff3030;
+  margin-bottom:15px;
 }
 
-.global-info{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-}
-
-label{
-    display:block;
-    color:#aaa;
-    font-size:13px;
-    margin-bottom:5px;
+input,button{
+  border:none;
+  outline:none;
+  border-radius:8px;
+  padding:10px;
 }
 
 input{
-    width:100%;
-    background:#0d0d0d;
-    border:1px solid #333;
-    color:#fff;
-    padding:11px;
-    border-radius:7px;
-    outline:none;
-}
-
-input:focus{
-    border-color:#ff3030;
+  background:#1d1d1d;
+  color:white;
+  border:1px solid #333;
+  width:100%;
 }
 
 button{
-    border:0;
-    border-radius:7px;
-    padding:10px 14px;
-    cursor:pointer;
-    font-weight:bold;
+  cursor:pointer;
+  font-weight:bold;
 }
 
-.btn-red{
-    background:#ff3030;
-    color:#fff;
+.red{
+  background:#e50909;
+  color:white;
 }
 
-.btn-dark{
-    background:#292929;
-    color:#fff;
+.green{
+  background:#087f23;
+  color:white;
 }
 
-.btn-green{
-    background:#159447;
-    color:#fff;
+.gray{
+  background:#333;
+  color:white;
 }
 
-.btn-blue{
-    background:#245fd1;
-    color:#fff;
+.danger{
+  background:#8d0000;
+  color:white;
 }
 
-.team-add{
-    display:flex;
-    gap:10px;
-}
-
-.team-add input{
-    flex:1;
+.row{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-bottom:10px;
 }
 
 .team{
-    background:#101010;
-    border:1px solid #282828;
-    border-radius:10px;
-    padding:12px;
-    margin-top:12px;
+  border:1px solid #333;
+  padding:15px;
+  border-radius:12px;
+  margin-bottom:15px;
 }
 
-.team-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
-    margin-bottom:10px;
+.team-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
 }
 
-.team-name{
-    font-size:18px;
-    font-weight:bold;
-    color:#fff;
+.team-title strong{
+  color:#ff4444;
 }
 
-.match-grid{
-    display:grid;
-    grid-template-columns:repeat(7,1fr);
-    gap:8px;
+.matches{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:7px;
 }
 
-.match-box{
-    background:#181818;
-    border:1px solid #303030;
-    border-radius:7px;
-    padding:8px;
+.match{
+  background:#181818;
+  border:1px solid #303030;
+  border-radius:8px;
+  padding:7px;
 }
 
-.match-title{
-    text-align:center;
-    color:#ff3030;
-    font-weight:bold;
-    margin-bottom:7px;
-    font-size:13px;
+.match b{
+  display:block;
+  text-align:center;
+  margin-bottom:6px;
+  color:#aaa;
+  font-size:12px;
 }
 
-.small-input{
-    padding:8px 5px;
-    text-align:center;
-    margin-bottom:5px;
+.match input{
+  padding:7px;
+  margin-bottom:5px;
+  font-size:12px;
 }
 
-.delete-btn{
-    background:#a91515;
-    color:white;
-    font-size:12px;
-    padding:7px 10px;
+.standings{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
 }
 
-.controls{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-top:15px;
+.standings th,
+.standings td{
+  padding:10px 6px;
+  text-align:center;
+  border-bottom:1px solid #292929;
 }
 
-.table-wrap{
-    overflow-x:auto;
+.standings th{
+  color:#ff4040;
+  background:#151515;
 }
 
-table{
-    width:100%;
-    border-collapse:collapse;
-    min-width:650px;
+.qualify{
+  background:#073c18 !important;
 }
 
-th{
-    background:#ff3030;
-    color:#fff;
-    padding:12px 8px;
+.login-box{
+  max-width:450px;
+  margin:50px auto;
 }
 
-td{
-    background:#121212;
-    border-bottom:1px solid #292929;
-    padding:11px 8px;
-    text-align:center;
+.admin-box{
+  display:none;
 }
 
-td:nth-child(2){
-    text-align:left;
-    font-weight:bold;
+.admin-list{
+  margin-top:15px;
 }
 
-.rank{
-    font-size:18px;
-    font-weight:bold;
+.admin-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  background:#191919;
+  border:1px solid #333;
+  border-radius:10px;
+  padding:12px;
+  margin-bottom:8px;
 }
 
-.total{
-    color:#ff4040;
-    font-weight:900;
-    font-size:18px;
+.admin-info{
+  flex:1;
 }
 
-.empty{
-    text-align:center;
-    color:#777;
-    padding:25px;
+.active{
+  color:#20e050;
 }
 
-@media(max-width:800px){
-    .match-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
+.disabled{
+  color:#ff4040;
 }
 
-@media(max-width:500px){
-    body{
-        padding:8px;
-    }
+.top-badge{
+  font-size:12px;
+  padding:4px 7px;
+  border-radius:6px;
+  background:#8b6500;
+  color:white;
+}
 
-    .global-info{
-        grid-template-columns:1fr;
-    }
+.hidden{
+  display:none !important;
+}
 
-    .team-add{
-        flex-direction:column;
-    }
+@media(max-width:700px){
+  .matches{
+    grid-template-columns:repeat(2,1fr);
+  }
 
-    .match-grid{
-        grid-template-columns:1fr 1fr;
-    }
+  .row{
+    grid-template-columns:1fr;
+  }
+
+  .admin-item{
+    flex-direction:column;
+    align-items:stretch;
+  }
 }
 </style>
 </head>
@@ -254,702 +239,1427 @@ td:nth-child(2){
 
 <div class="container">
 
-<h1>XENYX E-SPORTS</h1>
-<div class="subtitle">SEASON 01 - QUALIFIERS</div>
+<header>
+  <h1>XENYX E-SPORTS</h1>
+  <p>Tournament Points System</p>
+</header>
 
-<!-- GLOBAL DATE & TIME -->
-<div class="card">
-    <h2>Date & Time</h2>
 
-    <div class="global-info">
-        <div>
-            <label>DATE</label>
-            <input type="date" id="globalDate">
-        </div>
+<!-- LOGIN -->
 
-        <div>
-            <label>TIME</label>
-            <input type="time" id="globalTime">
-        </div>
-    </div>
+<div id="loginSection" class="card login-box">
+
+<h2>🔐 ADMIN LOGIN</h2>
+
+<div class="row">
+
+<div>
+<label>Email</label>
+<input id="loginEmail" type="email" placeholder="Admin email">
 </div>
+
+<div>
+<label>Password</label>
+<input id="loginPassword" type="password" placeholder="Password">
+</div>
+
+</div>
+
+<button class="red" onclick="login()" style="width:100%">
+LOGIN
+</button>
+
+<p id="loginMsg" style="margin-top:10px;color:#ff4040"></p>
+
+</div>
+
+
+<!-- ADMIN PANEL -->
+
+<div id="adminPanel" class="admin-box">
+
+<div class="card">
+
+<h2>👑 ADMIN PANEL</h2>
+
+<p id="adminWelcome" style="color:#aaa;margin-bottom:15px"></p>
+
+<button class="danger" onclick="logout()">LOGOUT</button>
+
+</div>
+
+
+<!-- ADMIN MANAGEMENT -->
+
+<div id="adminManagement" class="card">
+
+<h2>👑 ADMIN MANAGEMENT</h2>
+
+<p style="color:#aaa;margin-bottom:15px">
+Only Main Admin can add or manage admins.
+</p>
+
+<div class="row">
+
+<div>
+<label>Admin Name</label>
+<input id="newAdminName" placeholder="Example: Rahim">
+</div>
+
+<div>
+<label>Email</label>
+<input id="newAdminEmail" type="email" placeholder="admin@email.com">
+</div>
+
+</div>
+
+<div class="row">
+
+<div>
+<label>Password</label>
+<input id="newAdminPassword" type="password" placeholder="Minimum 6 characters">
+</div>
+
+<div style="display:flex;align-items:end">
+<button class="red" onclick="addNewAdmin()" style="width:100%">
+➕ ADD NEW ADMIN
+</button>
+</div>
+
+</div>
+
+<p id="adminMsg" style="margin-top:10px"></p>
+
+<div id="adminList" class="admin-list"></div>
+
+</div>
+
+
+<!-- TOURNAMENT -->
+
+<div class="card">
+
+<h2>⚙️ TOURNAMENT SETTINGS</h2>
+
+<div class="row">
+
+<div>
+<label>Date</label>
+<input id="eventDate" type="date">
+</div>
+
+<div>
+<label>Time</label>
+<input id="eventTime" type="time">
+</div>
+
+</div>
+
+<div class="row">
+
+<div>
+<label>TOP QUALIFY</label>
+<input id="qualifyCount" type="number" value="4" min="1">
+</div>
+
+<div style="display:flex;align-items:end">
+<button class="green" onclick="setQualify()" style="width:100%">
+SET QUALIFY
+</button>
+</div>
+
+</div>
+
+</div>
+
 
 <!-- TEAM ADD -->
+
 <div class="card">
-    <h2>Teams</h2>
 
-    <div class="team-add">
-        <input
-            type="text"
-            id="teamName"
-            placeholder="Enter Team Name"
-        >
+<h2>➕ ADD TEAM</h2>
 
-        <button class="btn-red" onclick="addTeam()">
-            + ADD TEAM
-        </button>
-    </div>
+<div class="row">
 
-    <div id="teamsContainer"></div>
-
-    <div class="controls">
-        <button class="btn-dark" onclick="resetAll()">
-            RESET ALL
-        </button>
-
-        <button class="btn-green" onclick="saveData()">
-            SAVE DATA
-        </button>
-
-        <button class="btn-blue" onclick="downloadImage()">
-            DOWNLOAD FINAL IMAGE
-        </button>
-    </div>
+<div>
+<input id="teamName" placeholder="Team name">
 </div>
 
-<!-- OVERALL -->
+<div>
+<button class="red" onclick="addTeam()" style="width:100%">
+ADD TEAM
+</button>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- TEAMS -->
+
 <div class="card">
-    <h2>OVERALL STANDINGS</h2>
 
-    <div class="table-wrap">
-        <table>
-            <thead>
-                <tr>
-                    <th>RANK</th>
-                    <th>TEAM</th>
-                    <th>MATCH</th>
-                    <th>KILL</th>
-                    <th>PLACEMENT</th>
-                    <th>TOTAL POINT</th>
-                </tr>
-            </thead>
+<h2>🎮 MATCH RESULTS</h2>
 
-            <tbody id="overallBody"></tbody>
-        </table>
-    </div>
+<div id="teams"></div>
+
+</div>
+
+
+<!-- STANDINGS -->
+
+<div class="card">
+
+<h2>🏆 OVERALL STANDINGS</h2>
+
+<div style="overflow-x:auto">
+
+<table class="standings">
+
+<thead>
+
+<tr>
+<th>#</th>
+<th>TEAM</th>
+<th>KILLS</th>
+<th>PLACE</th>
+<th>TOTAL</th>
+</tr>
+
+</thead>
+
+<tbody id="standingsBody"></tbody>
+
+</table>
+
 </div>
 
 </div>
 
-<script>
 
-const MAX_MATCHES = 7;
-const STORAGE_KEY = "xenyxTeams";
+<!-- BUTTONS -->
 
-let teams = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+<div class="card">
 
-/* GLOBAL DATE/TIME */
-const globalDate = document.getElementById("globalDate");
-const globalTime = document.getElementById("globalTime");
+<div class="row">
 
-globalDate.value = localStorage.getItem("globalDate") || "";
-globalTime.value = localStorage.getItem("globalTime") || "";
+<button class="green" onclick="saveTournament()">
+💾 SAVE
+</button>
 
-globalDate.addEventListener("change", saveGlobalDateTime);
-globalTime.addEventListener("change", saveGlobalDateTime);
+<button class="gray" onclick="loadTournament()">
+🔄 LOAD
+</button>
 
-function saveGlobalDateTime(){
-    localStorage.setItem("globalDate", globalDate.value);
-    localStorage.setItem("globalTime", globalTime.value);
+</div>
+
+<div class="row">
+
+<button class="danger" onclick="resetTournament()">
+♻️ RESET
+</button>
+
+<button class="red" onclick="downloadImage()">
+📸 DOWNLOAD IMAGE
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script type="module">
+
+import {
+ initializeApp,
+ getApps,
+ getApp
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+import {
+ getAuth,
+ signInWithEmailAndPassword,
+ signOut,
+ onAuthStateChanged,
+ createUserWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+import {
+ getFirestore,
+ doc,
+ getDoc,
+ setDoc,
+ collection,
+ getDocs,
+ updateDoc,
+ deleteDoc,
+ serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+/* FIREBASE */
+
+const firebaseConfig = {
+ apiKey:"AIzaSyBfPTsq4gDFN8MdLrt4Lv_ccWjrgb_CtZ0",
+ authDomain:"pointsystem-3e20a.firebaseapp.com",
+ projectId:"pointsystem-3e20a",
+ storageBucket:"pointsystem-3e20a.firebasestorage.app",
+ messagingSenderId:"335071663643",
+ appId:"1:335071663643:web:9cdddd709af5c37dda8abe"
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+
+/* SECOND AUTH FOR ADDING ADMIN */
+
+const secondaryApp = initializeApp(
+ firebaseConfig,
+ "SecondaryApp"
+);
+
+const secondaryAuth = getAuth(secondaryApp);
+
+
+/* MAIN ADMIN UID */
+
+const MAIN_ADMIN_UID =
+"TVnLZR8XnQfN1B4QNe2g7vgX1yx2";
+
+
+let currentAdmin = null;
+
+let currentAdminData = null;
+
+let teams = [];
+
+let qualifyCount = 4;
+
+
+/* LOGIN */
+
+window.login = async function(){
+
+ const email =
+ document.getElementById("loginEmail").value.trim();
+
+ const password =
+ document.getElementById("loginPassword").value;
+
+ const msg =
+ document.getElementById("loginMsg");
+
+ msg.style.color="#ff4040";
+
+ if(!email || !password){
+
+   msg.textContent="Email and password required.";
+
+   return;
+ }
+
+ try{
+
+   await signInWithEmailAndPassword(
+     auth,
+     email,
+     password
+   );
+
+ }catch(error){
+
+   msg.textContent =
+   error.message;
+
+ }
+
+};
+
+
+/* AUTH STATE */
+
+onAuthStateChanged(auth,async(user)=>{
+
+ if(!user){
+
+   currentAdmin=null;
+   currentAdminData=null;
+
+   document.getElementById("loginSection")
+   .style.display="block";
+
+   document.getElementById("adminPanel")
+   .style.display="none";
+
+   return;
+ }
+
+ currentAdmin=user;
+
+ try{
+
+   const adminRef =
+   doc(db,"admins",user.uid);
+
+   const snap =
+   await getDoc(adminRef);
+
+   if(!snap.exists()){
+
+     await signOut(auth);
+
+     alert("You are not an admin.");
+
+     return;
+   }
+
+   currentAdminData=snap.data();
+
+   if(currentAdminData.active !== true){
+
+     await signOut(auth);
+
+     alert("Your admin account is disabled.");
+
+     return;
+   }
+
+
+   document.getElementById("loginSection")
+   .style.display="none";
+
+   document.getElementById("adminPanel")
+   .style.display="block";
+
+
+   document.getElementById("adminWelcome")
+   .textContent =
+   "Logged in as: "+
+   (currentAdminData.name ||
+    currentAdminData.email ||
+    user.email);
+
+
+   /*
+      MAIN ADMIN CHECK
+      UID + ROLE BOTH CHECKED
+   */
+
+   const isSuperAdmin =
+     user.uid === MAIN_ADMIN_UID ||
+     currentAdminData.role === "superAdmin";
+
+
+   if(isSuperAdmin){
+
+      document.getElementById("adminManagement")
+      .style.display="block";
+
+      await loadAdminList();
+
+   }else{
+
+      document.getElementById("adminManagement")
+      .style.display="none";
+
+   }
+
+
+   await loadTournament();
+
+ }catch(error){
+
+   console.error(error);
+
+   alert(
+    "Admin data load error: "+
+    error.message
+   );
+
+ }
+
+});
+
+
+/* LOGOUT */
+
+window.logout = async function(){
+
+ await signOut(auth);
+
+};
+
+
+/* ADD NEW ADMIN */
+
+window.addNewAdmin = async function(){
+
+ if(!currentAdmin){
+
+   alert("Login first.");
+
+   return;
+ }
+
+
+ const isSuperAdmin =
+ currentAdmin.uid === MAIN_ADMIN_UID ||
+ currentAdminData?.role === "superAdmin";
+
+
+ if(!isSuperAdmin){
+
+   alert("Only Main Admin can add new admin.");
+
+   return;
+ }
+
+
+ const name =
+ document.getElementById("newAdminName")
+ .value.trim();
+
+ const email =
+ document.getElementById("newAdminEmail")
+ .value.trim();
+
+ const password =
+ document.getElementById("newAdminPassword")
+ .value;
+
+
+ const msg =
+ document.getElementById("adminMsg");
+
+
+ if(!name || !email || !password){
+
+   msg.style.color="#ff4040";
+
+   msg.textContent=
+   "সবগুলো ঘর পূরণ করো।";
+
+   return;
+ }
+
+
+ if(password.length < 6){
+
+   msg.style.color="#ff4040";
+
+   msg.textContent=
+   "Password minimum 6 characters.";
+
+   return;
+ }
+
+
+ try{
+
+   msg.style.color="#aaa";
+
+   msg.textContent=
+   "Creating admin...";
+
+
+   /*
+      SECONDARY AUTH ব্যবহার করছি,
+      তাই Main Admin logout হবে না।
+   */
+
+   const result =
+   await createUserWithEmailAndPassword(
+     secondaryAuth,
+     email,
+     password
+   );
+
+
+   const newUid =
+   result.user.uid;
+
+
+   await setDoc(
+     doc(db,"admins",newUid),
+     {
+       name:name,
+       email:email,
+       role:"admin",
+       active:true,
+       createdAt:serverTimestamp(),
+       createdBy:currentAdmin.uid
+     }
+   );
+
+
+   await signOut(secondaryAuth);
+
+
+   msg.style.color="#20e050";
+
+   msg.textContent=
+   "✅ New Admin successfully added.";
+
+
+   document.getElementById("newAdminName")
+   .value="";
+
+   document.getElementById("newAdminEmail")
+   .value="";
+
+   document.getElementById("newAdminPassword")
+   .value="";
+
+
+   await loadAdminList();
+
+ }catch(error){
+
+   console.error(error);
+
+   msg.style.color="#ff4040";
+
+   msg.textContent=
+   error.message;
+
+ }
+
+};
+
+
+/* LOAD ADMIN LIST */
+
+async function loadAdminList(){
+
+ const list =
+ document.getElementById("adminList");
+
+ list.innerHTML=
+ "<p style='color:#aaa'>Loading admins...</p>";
+
+
+ try{
+
+   const snapshot =
+   await getDocs(
+     collection(db,"admins")
+   );
+
+
+   list.innerHTML="";
+
+
+   snapshot.forEach(item=>{
+
+     const data=item.data();
+
+     const uid=item.id;
+
+     const div=
+     document.createElement("div");
+
+     div.className="admin-item";
+
+
+     const status =
+       data.active === true
+       ? `<span class="active">ACTIVE</span>`
+       : `<span class="disabled">DISABLED</span>`;
+
+
+     const role =
+       data.role === "superAdmin"
+       ? "👑 SUPER ADMIN"
+       : "ADMIN";
+
+
+     const buttons =
+       uid === MAIN_ADMIN_UID
+       ? `<span class="top-badge">MAIN ADMIN</span>`
+       : `
+         <button class="gray"
+           onclick="toggleAdmin('${uid}',${data.active===true})">
+           ${data.active===true ? "DISABLE":"ENABLE"}
+         </button>
+
+         <button class="danger"
+           onclick="deleteAdmin('${uid}')">
+           DELETE
+         </button>
+       `;
+
+
+     div.innerHTML=`
+
+       <div class="admin-info">
+
+         <strong>
+         ${escapeHTML(data.name || "Admin")}
+         </strong>
+
+         <br>
+
+         <small>
+         ${escapeHTML(data.email || "")}
+         </small>
+
+         <br>
+
+         <small>
+         ${role} • ${status}
+         </small>
+
+       </div>
+
+       <div>
+       ${buttons}
+       </div>
+     `;
+
+
+     list.appendChild(div);
+
+   });
+
+
+ }catch(error){
+
+   console.error(error);
+
+   list.innerHTML=
+   "<p style='color:#ff4040'>"+
+   error.message+
+   "</p>";
+
+ }
+
+}
+
+
+/* TOGGLE ADMIN */
+
+window.toggleAdmin = async function(uid,newState){
+
+ if(!confirm(
+   newState
+   ? "Disable this admin?"
+   : "Enable this admin?"
+ )) return;
+
+
+ try{
+
+   await updateDoc(
+     doc(db,"admins",uid),
+     {
+       active:!newState
+     }
+   );
+
+
+   await loadAdminList();
+
+
+ }catch(error){
+
+   alert(error.message);
+
+ }
+
+};
+
+
+/* DELETE ADMIN ACCESS */
+
+window.deleteAdmin = async function(uid){
+
+ if(uid===MAIN_ADMIN_UID){
+
+   alert("Main Admin cannot be deleted.");
+
+   return;
+ }
+
+
+ if(!confirm(
+   "এই admin-এর access delete করবে?"
+ )) return;
+
+
+ try{
+
+   /*
+      এখানে Firestore admin document delete হবে।
+      Firebase Authentication account delete হবে না।
+      ফলে login করলেও admin access পাবে না।
+   */
+
+   await deleteDoc(
+     doc(db,"admins",uid)
+   );
+
+
+   await loadAdminList();
+
+
+ }catch(error){
+
+   alert(error.message);
+
+ }
+
+};
+
+
+/* ESCAPE */
+
+function escapeHTML(value){
+
+ return String(value)
+ .replaceAll("&","&amp;")
+ .replaceAll("<","&lt;")
+ .replaceAll(">","&gt;")
+ .replaceAll('"',"&quot;")
+ .replaceAll("'","&#039;");
+
 }
 
 
 /* ADD TEAM */
-function addTeam(){
 
-    const input = document.getElementById("teamName");
-    const name = input.value.trim();
+window.addTeam=function(){
 
-    if(!name){
-        alert("Enter team name!");
-        return;
-    }
+ const name=
+ document.getElementById("teamName")
+ .value.trim();
 
-    teams.push({
-        name:name,
-        matches:Array.from(
-            {length:MAX_MATCHES},
-            ()=>({k:"",p:""})
-        )
-    });
 
-    input.value="";
+ if(!name){
 
-    saveData();
-    renderTeams();
-    renderOverall();
-}
+   alert("Team name দাও।");
+
+   return;
+ }
+
+
+ teams.push({
+
+   id:Date.now(),
+
+   name:name,
+
+   matches:Array.from(
+     {length:7},
+     ()=>({
+       kills:0,
+       place:0
+     })
+   )
+
+ });
+
+
+ document.getElementById("teamName")
+ .value="";
+
+
+ renderTeams();
+
+ renderStandings();
+
+};
 
 
 /* DELETE TEAM */
-function deleteTeam(index){
 
-    if(!confirm("Delete this team?")){
-        return;
-    }
+window.deleteTeam=function(id){
 
-    teams.splice(index,1);
-
-    saveData();
-    renderTeams();
-    renderOverall();
-}
+ if(!confirm("এই team delete করবে?"))
+ return;
 
 
-/* CALCULATE */
-function calculateTeam(team){
+ teams=
+ teams.filter(team=>team.id!==id);
 
-    let kills = 0;
-    let placement = 0;
-    let matchCount = 0;
 
-    team.matches.forEach(match=>{
+ renderTeams();
 
-        const kValue = match.k;
-        const pValue = match.p;
+ renderStandings();
 
-        /*
-        Blank K and blank P = match not played.
-        0 is considered a played match.
-        */
-        if(kValue !== "" || pValue !== ""){
-            matchCount++;
-        }
-
-        kills += Number(kValue) || 0;
-        placement += Number(pValue) || 0;
-    });
-
-    return {
-        name:team.name,
-        matches:matchCount,
-        kills:kills,
-        placement:placement,
-        total:kills + placement
-    };
-}
+};
 
 
 /* RENDER TEAMS */
+
 function renderTeams(){
 
-    const container = document.getElementById("teamsContainer");
+ const box=
+ document.getElementById("teams");
 
-    if(teams.length === 0){
-        container.innerHTML =
-            '<div class="empty">No team added yet.</div>';
-        return;
-    }
+ box.innerHTML="";
 
-    container.innerHTML = "";
 
-    teams.forEach((team,index)=>{
+ teams.forEach(team=>{
 
-        const teamDiv = document.createElement("div");
-        teamDiv.className = "team";
+   const div=
+   document.createElement("div");
 
-        let html = `
-            <div class="team-header">
+   div.className="team";
 
-                <div class="team-name">
-                    ${escapeHTML(team.name)}
-                </div>
 
-                <button
-                    class="delete-btn"
-                    onclick="deleteTeam(${index})"
-                >
-                    DELETE
-                </button>
+   let html=`
 
-            </div>
+     <div class="team-title">
 
-            <div class="match-grid">
-        `;
+       <strong>
+       ${escapeHTML(team.name)}
+       </strong>
 
-        for(let i=0;i<MAX_MATCHES;i++){
+       <button class="danger"
+       onclick="deleteTeam(${team.id})">
+       DELETE
+       </button>
 
-            html += `
-                <div class="match-box">
+     </div>
 
-                    <div class="match-title">
-                        MATCH ${i+1}
-                    </div>
+     <div class="matches">
+   `;
 
-                    <input
-                        class="small-input"
-                        type="number"
-                        min="0"
-                        placeholder="KILL"
-                        value="${team.matches[i].k}"
-                        onchange="updateMatch(${index},${i},'k',this.value)"
-                    >
 
-                    <input
-                        class="small-input"
-                        type="number"
-                        min="0"
-                        placeholder="PLACE"
-                        value="${team.matches[i].p}"
-                        onchange="updateMatch(${index},${i},'p',this.value)"
-                    >
+   for(let i=0;i<7;i++){
 
-                </div>
-            `;
-        }
+     html+=`
 
-        html += `</div>`;
+       <div class="match">
 
-        teamDiv.innerHTML = html;
+         <b>MATCH ${i+1}</b>
 
-        container.appendChild(teamDiv);
-    });
+         <input
+         type="number"
+         min="0"
+         value="${team.matches[i].kills}"
+         onchange="updateMatch(${team.id},${i},'kills',this.value)"
+         placeholder="KILL">
+
+         <input
+         type="number"
+         min="0"
+         value="${team.matches[i].place}"
+         onchange="updateMatch(${team.id},${i},'place',this.value)"
+         placeholder="PLACE">
+
+       </div>
+
+     `;
+
+   }
+
+
+   html+=`</div>`;
+
+
+   div.innerHTML=html;
+
+   box.appendChild(div);
+
+ });
+
 }
 
 
 /* UPDATE MATCH */
-function updateMatch(teamIndex,matchIndex,type,value){
 
-    teams[teamIndex].matches[matchIndex][type] = value;
+window.updateMatch=function(
+ id,
+ matchIndex,
+ type,
+ value
+){
 
-    saveData();
-    renderOverall();
+ const team=
+ teams.find(t=>t.id===id);
+
+ if(!team)return;
+
+
+ team.matches[matchIndex][type]=
+ Math.max(0,Number(value)||0);
+
+
+ renderStandings();
+
+};
+
+
+/* POINT CALCULATION */
+
+function getTeamStats(team){
+
+ let kills=0;
+
+ let place=0;
+
+
+ team.matches.forEach(match=>{
+
+   kills += Number(match.kills)||0;
+
+   place += Number(match.place)||0;
+
+ });
+
+
+ return{
+
+   kills:kills,
+
+   placement:place,
+
+   total:kills+place
+
+ };
+
 }
 
 
-/* OVERALL */
-function renderOverall(){
+/* STANDINGS */
 
-    const body = document.getElementById("overallBody");
+function getSortedTeams(){
 
-    if(teams.length === 0){
-        body.innerHTML = `
-            <tr>
-                <td colspan="6" class="empty">
-                    No data available
-                </td>
-            </tr>
-        `;
-        return;
-    }
+ return [...teams].sort((a,b)=>{
 
-    let results = teams.map(calculateTeam);
+   const A=getTeamStats(a);
 
-    results.sort((a,b)=>{
+   const B=getTeamStats(b);
 
-        if(b.total !== a.total)
-            return b.total - a.total;
 
-        if(b.kills !== a.kills)
-            return b.kills - a.kills;
+   if(B.total!==A.total)
+   return B.total-A.total;
 
-        return b.placement - a.placement;
-    });
 
-    body.innerHTML = "";
+   if(B.kills!==A.kills)
+   return B.kills-A.kills;
 
-    results.forEach((team,index)=>{
 
-        const row = document.createElement("tr");
+   return B.placement-A.placement;
 
-        row.innerHTML = `
-            <td class="rank">${index+1}</td>
-            <td>${escapeHTML(team.name)}</td>
-            <td>${team.matches}</td>
-            <td>${team.kills}</td>
-            <td>${team.placement}</td>
-            <td class="total">${team.total}</td>
-        `;
+ });
 
-        body.appendChild(row);
-    });
 }
+
+
+/* RENDER STANDINGS */
+
+function renderStandings(){
+
+ const body=
+ document.getElementById("standingsBody");
+
+ body.innerHTML="";
+
+
+ const sorted=
+ getSortedTeams();
+
+
+ sorted.forEach((team,index)=>{
+
+   const stats=
+   getTeamStats(team);
+
+
+   const tr=
+   document.createElement("tr");
+
+
+   if(index < qualifyCount){
+
+     tr.classList.add("qualify");
+
+   }
+
+
+   let badge="";
+
+
+   if(index===0)
+   badge=" 🏆";
+
+   else if(index===1)
+   badge=" 🥈";
+
+   else if(index===2)
+   badge=" 🥉";
+
+
+   tr.innerHTML=`
+
+     <td>
+     ${index+1}
+     </td>
+
+     <td>
+     <strong>
+     ${escapeHTML(team.name)}
+     </strong>
+     ${badge}
+     </td>
+
+     <td>
+     ${stats.kills}
+     </td>
+
+     <td>
+     ${stats.placement}
+     </td>
+
+     <td>
+     <strong>
+     ${stats.total}
+     </strong>
+     </td>
+
+   `;
+
+
+   body.appendChild(tr);
+
+ });
+
+}
+
+
+/* QUALIFY */
+
+window.setQualify=function(){
+
+ const value=
+ Number(
+   document.getElementById("qualifyCount")
+   .value
+ );
+
+
+ qualifyCount=
+ Math.max(1,value||1);
+
+
+ renderStandings();
+
+};
 
 
 /* SAVE */
-function saveData(){
 
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(teams)
-    );
+window.saveTournament=async function(){
 
-    saveGlobalDateTime();
-}
+ if(!currentAdmin){
+
+   alert("Login first.");
+
+   return;
+ }
+
+
+ try{
+
+   await setDoc(
+     doc(db,"tournament","current"),
+     {
+
+       teams:teams,
+
+       qualifyCount:qualifyCount,
+
+       eventDate:
+       document.getElementById("eventDate")
+       .value,
+
+       eventTime:
+       document.getElementById("eventTime")
+       .value,
+
+       updatedAt:serverTimestamp(),
+
+       updatedBy:currentAdmin.uid
+
+     }
+   );
+
+
+   alert("✅ Tournament saved successfully.");
+
+ }catch(error){
+
+   console.error(error);
+
+   alert(
+     "Save error: "+
+     error.message
+   );
+
+ }
+
+};
+
+
+/* LOAD */
+
+window.loadTournament=async function(){
+
+ try{
+
+   const snap=
+   await getDoc(
+     doc(db,"tournament","current")
+   );
+
+
+   if(!snap.exists()){
+
+     renderTeams();
+
+     renderStandings();
+
+     return;
+
+   }
+
+
+   const data=snap.data();
+
+
+   teams=
+   Array.isArray(data.teams)
+   ? data.teams
+   : [];
+
+
+   qualifyCount=
+   Number(data.qualifyCount)||4;
+
+
+   document.getElementById("qualifyCount")
+   .value=qualifyCount;
+
+
+   document.getElementById("eventDate")
+   .value=data.eventDate||"";
+
+
+   document.getElementById("eventTime")
+   .value=data.eventTime||"";
+
+
+   renderTeams();
+
+   renderStandings();
+
+
+ }catch(error){
+
+   console.error(error);
+
+   alert(
+     "Load error: "+
+     error.message
+   );
+
+ }
+
+};
 
 
 /* RESET */
-function resetAll(){
 
-    if(!confirm("Are you sure you want to reset everything?")){
-        return;
-    }
+window.resetTournament=function(){
 
-    teams = [];
+ if(!confirm(
+   "সব team এবং result reset করবে?"
+ )) return;
 
-    localStorage.removeItem(STORAGE_KEY);
 
-    renderTeams();
-    renderOverall();
-}
+ teams=[];
 
+ qualifyCount=4;
 
-/* ESCAPE HTML */
-function escapeHTML(text){
 
-    return String(text)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-}
+ document.getElementById("qualifyCount")
+ .value=4;
 
 
-/* DATE FORMAT */
-function formatDate(dateString){
+ document.getElementById("eventDate")
+ .value="";
 
-    if(!dateString){
-        return "DATE: —";
-    }
 
-    const date = new Date(dateString + "T00:00:00");
+ document.getElementById("eventTime")
+ .value="";
 
-    return "DATE: " +
-        date.toLocaleDateString("en-GB",{
-            day:"2-digit",
-            month:"2-digit",
-            year:"numeric"
-        });
-}
 
+ renderTeams();
 
-/* TIME FORMAT */
-function formatTime(timeString){
+ renderStandings();
 
-    if(!timeString){
-        return "TIME: —";
-    }
+};
 
-    const parts = timeString.split(":");
-    let hour = Number(parts[0]);
-    const minute = parts[1];
 
-    const ampm = hour >= 12 ? "PM" : "AM";
+/* DOWNLOAD IMAGE */
 
-    hour = hour % 12;
+window.downloadImage=function(){
 
-    if(hour === 0){
-        hour = 12;
-    }
+ const sorted=
+ getSortedTeams();
 
-    return "TIME: " +
-        hour.toString().padStart(2,"0") +
-        ":" +
-        minute +
-        " " +
-        ampm;
-}
 
+ const canvas=
+ document.createElement("canvas");
 
-/* DOWNLOAD FINAL IMAGE */
-function downloadImage(){
 
-    if(teams.length === 0){
-        alert("Add teams first!");
-        return;
-    }
+ canvas.width=1080;
 
-    const canvas = document.createElement("canvas");
+ canvas.height=1920;
 
-    /*
-        FINAL IMAGE SIZE
-        1080 x 1920
-    */
-    canvas.width = 1080;
-    canvas.height = 1920;
 
-    const ctx = canvas.getContext("2d");
+ const ctx=
+ canvas.getContext("2d");
 
-    const img = new Image();
 
-    img.onload = function(){
+ ctx.fillStyle="#080808";
 
-        /* BACKGROUND */
-        ctx.drawImage(
-            img,
-            0,
-            0,
-            canvas.width,
-            canvas.height
-        );
-
-        /* DARK OVERLAY */
-        ctx.fillStyle = "rgba(0,0,0,0.62)";
-        ctx.fillRect(
-            0,
-            0,
-            canvas.width,
-            canvas.height
-        );
-
-        /* HEADER */
-        ctx.textAlign = "center";
-
-        ctx.fillStyle = "#ffffff";
-        ctx.font = "bold 42px Arial";
-
-        ctx.fillText(
-            "SEASON 01 - QUALIFIERS",
-            540,
-            100
-        );
-
-        ctx.fillStyle = "#ff3030";
-        ctx.font = "bold 64px Arial";
-
-        ctx.fillText(
-            "XENYX E-SPORTS",
-            540,
-            175
-        );
-
-        ctx.fillStyle = "#ffffff";
-        ctx.font = "bold 30px Arial";
-
-        ctx.fillText(
-            "PRESENTS",
-            540,
-            225
-        );
-
-        ctx.fillStyle = "#dddddd";
-        ctx.font = "bold 28px Arial";
-
-        ctx.fillText(
-            formatDate(globalDate.value),
-            540,
-            275
-        );
-
-        ctx.fillText(
-            formatTime(globalTime.value),
-            540,
-            315
-        );
-
-
-        /* TITLE */
-        ctx.fillStyle = "#ff3030";
-        ctx.font = "bold 48px Arial";
-
-        ctx.fillText(
-            "OVERALL STANDINGS",
-            540,
-            410
-        );
-
-
-        /* DATA */
-        let results = teams.map(calculateTeam);
-
-        results.sort((a,b)=>{
-
-            if(b.total !== a.total)
-                return b.total - a.total;
-
-            if(b.kills !== a.kills)
-                return b.kills - a.kills;
-
-            return b.placement - a.placement;
-        });
-
-
-        /* TABLE */
-        const tableX = 55;
-        const tableY = 465;
-        const tableW = 970;
-
-        const rowH = 78;
-
-        const cols = [
-            90,
-            360,
-            120,
-            120,
-            140,
-            140
-        ];
-
-        /* HEADER */
-        ctx.fillStyle = "#ff3030";
-        ctx.fillRect(
-            tableX,
-            tableY,
-            tableW,
-            rowH
-        );
-
-        const headers = [
-            "RANK",
-            "TEAM",
-            "MATCH",
-            "KILL",
-            "PLACEMENT",
-            "TOTAL"
-        ];
-
-        ctx.fillStyle = "#ffffff";
-        ctx.font = "bold 22px Arial";
-        ctx.textAlign = "center";
-
-        let x = tableX;
-
-        headers.forEach((header,i)=>{
-
-            ctx.fillText(
-                header,
-                x + cols[i]/2,
-                tableY + 49
-            );
-
-            x += cols[i];
-        });
-
-
-        /* ROWS */
-        results.forEach((team,index)=>{
-
-            const y =
-                tableY +
-                rowH +
-                index * rowH;
-
-            ctx.fillStyle =
-                index % 2 === 0
-                ? "rgba(20,20,20,0.90)"
-                : "rgba(35,35,35,0.90)";
-
-            ctx.fillRect(
-                tableX,
-                y,
-                tableW,
-                rowH
-            );
-
-            ctx.strokeStyle = "rgba(255,255,255,0.15)";
-            ctx.strokeRect(
-                tableX,
-                y,
-                tableW,
-                rowH
-            );
-
-            const values = [
-                index + 1,
-                team.name,
-                team.matches,
-                team.kills,
-                team.placement,
-                team.total
-            ];
-
-            x = tableX;
-
-            values.forEach((value,i)=>{
-
-                ctx.fillStyle =
-                    i === 5
-                    ? "#ff4040"
-                    : "#ffffff";
-
-                ctx.font =
-                    i === 5
-                    ? "bold 25px Arial"
-                    : "bold 21px Arial";
-
-                ctx.fillText(
-                    String(value),
-                    x + cols[i]/2,
-                    y + 49
-                );
-
-                x += cols[i];
-            });
-        });
-
-
-        /* FOOTER */
-        ctx.textAlign = "center";
-
-        ctx.fillStyle = "#ff3030";
-        ctx.font = "bold 42px Arial";
-
-        ctx.fillText(
-            "XENYX E-SPORTS",
-            540,
-            1700
-        );
-
-        ctx.fillStyle = "#ffffff";
-        ctx.font = "bold 48px Arial";
-
-        ctx.fillText(
-            "FREE FIRE",
-            540,
-            1760
-        );
-
-        ctx.fillStyle = "#ff3030";
-        ctx.font = "bold 52px Arial";
-
-        ctx.fillText(
-            "MAX",
-            540,
-            1820
-        );
-
-        ctx.fillStyle = "#ffffff";
-        ctx.font = "bold 25px Arial";
-
-        ctx.fillText(
-            "XENYX E-SPORTS",
-            540,
-            1870
-        );
-
-
-        /* DOWNLOAD */
-        const link = document.createElement("a");
-
-        link.download =
-            "XENYX-OVERALL-STANDINGS.png";
-
-        link.href = canvas.toDataURL(
-            "image/png",
-            1.0
-        );
-
-        link.click();
-    };
-
-
-    img.onerror = function(){
-
-        alert(
-            "pointtabble.png পাওয়া যাচ্ছে না!\n\n" +
-            "index.html এর পাশে pointtabble.png রাখো।"
-        );
-    };
-
-
-    img.src = "pointtabble.png";
-}
-
-
-/* INITIAL LOAD */
+ ctx.fillRect(
+   0,0,
+   canvas.width,
+   canvas.height
+ );
+
+
+ ctx.fillStyle="#ff2020";
+
+ ctx.font="bold 55px Arial";
+
+ ctx.textAlign="center";
+
+ ctx.fillText(
+   "XENYX E-SPORTS",
+   540,
+   100
+ );
+
+
+ ctx.fillStyle="#ffffff";
+
+ ctx.font="bold 38px Arial";
+
+ ctx.fillText(
+   "TOURNAMENT POINT TABLE",
+   540,
+   160
+ );
+
+
+ let y=250;
+
+
+ sorted.forEach((team,index)=>{
+
+   const stats=
+   getTeamStats(team);
+
+
+   ctx.fillStyle=
+   index<qualifyCount
+   ? "#073c18"
+   : "#151515";
+
+
+   ctx.fillRect(
+     60,
+     y-45,
+     960,
+     100
+   );
+
+
+   ctx.fillStyle="#ffffff";
+
+   ctx.textAlign="left";
+
+   ctx.font="bold 28px Arial";
+
+
+   ctx.fillText(
+     `${index+1}. ${team.name}`,
+     85,
+     y
+   );
+
+
+   ctx.textAlign="right";
+
+   ctx.fillText(
+     `K ${stats.kills}   P ${stats.placement}   TOTAL ${stats.total}`,
+     995,
+     y
+   );
+
+
+   y+=120;
+
+ });
+
+
+ ctx.textAlign="center";
+
+ ctx.fillStyle="#aaa";
+
+ ctx.font="22px Arial";
+
+ const date=
+ document.getElementById("eventDate")
+ .value;
+
+ const time=
+ document.getElementById("eventTime")
+ .value;
+
+
+ ctx.fillText(
+   `${date} ${time}`,
+   540,
+   1840
+ );
+
+
+ const link=
+ document.createElement("a");
+
+
+ link.download="pointtabble.png";
+
+ link.href=
+ canvas.toDataURL("image/png");
+
+
+ link.click();
+
+};
+
+
+/* INITIAL */
+
 renderTeams();
-renderOverall();
+
+renderStandings();
 
 </script>
 
